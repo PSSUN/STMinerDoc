@@ -12,17 +12,17 @@
 ## Methods of SPFinder
 
 ### load data
-- read_10x
-- read_gem
-- merge_bin
+- read_10x()
+- read_gem()
+- merge_bin()
 ### preprocess
-- fit_pattern
-- normalize
-- log1p
+- fit_pattern()
+- normalize()
+- log1p()
 ### fit model
-- fit_pattern
+- fit_pattern()
 ### build distance array & clustering
-- cluster
+- cluster()
 ### visualization
-- plot_pattern
-- plot_heatmap
+- plot_pattern()
+- plot_heatmap()
