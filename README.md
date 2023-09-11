@@ -1,2 +1,1 @@
-# SPFinderDoc
-Doc of SPFinder
+Doc of SCGF
