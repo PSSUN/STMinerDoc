@@ -1,6 +1,6 @@
 # API
 
-## Attribute of SPFinder
+## Attribute of STMiner
 
 | Attribute           | Type         | Description                        |
 |---------------------|--------------|------------------------------------|
@@ -9,10 +9,10 @@
 | genes_distance_aray | pd.DataFrame | Distance between each GMM          |
 | genes_labels        | pd.DataFrame | Gene name and their pattern labels |
 
-## Methods of SPFinder
+## Methods of STMiner
 
 ### load data
-- read_10x()
+- read_h5ad()
 - read_gem()
 - merge_bin()
 ### preprocess
