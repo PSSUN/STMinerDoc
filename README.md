@@ -1,1 +1,1 @@
-Doc of SCGF
+Doc of STMiner
