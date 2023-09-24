@@ -5,35 +5,32 @@
 ### import package
 
 ```python
-from SPFinder import SPFinder
+from STMiner.SPFinder import SPFinder
 ```
 
 ### Load data
 
 ```python
-spf = SPFinder()
-spf.read_10x(file='F://Rep11_MOB_ST.h5ad', amplification=1000, bin_size=80)
-```
-
-### Preprocess
-
-```python
-spf.normalize()
-```
-
-Optional:
-
-```python
-spf.log1p()
+file_path = 'I://human/10X_Visium_hunter2021spatially_sample_C_data.h5ad'
+sp = SPFinder()
+sp.read_h5ad(file=file_path)
 ```
 
 ### Fit GMM
 
 ```python
-spf.fit_pattern(n_top_genes=100, n_comp=10)
+sp.fit_pattern(n_comp=20, n_top_genes=200, min_cells=200)
+
+n_comp=20:Each GMM model has 10 components.
 ```
 
-Each GMM model has 10 components.
+### Build distance array
+
+```python
+sp.build_distance_array()
+```
+
+
 
 ### build distance matrix & clustering
 
