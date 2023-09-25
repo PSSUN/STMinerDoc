@@ -22,7 +22,7 @@ source_parsers = {
 }
 source_suffix = ['.rst', '.md']
 
-project = 'SPFinder'
+project = 'STMiner'
 copyright = '2023, pssun'
 author = 'pssun'
 
