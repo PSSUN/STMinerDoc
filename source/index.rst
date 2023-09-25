@@ -12,8 +12,10 @@ Welcome to SPFinder's documentation!
 
 
    Introduction/Introduction
+   Install/Install
    Tutorial/Tutorial
    API/API
+
 
 
 Indices and tables
