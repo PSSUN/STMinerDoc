@@ -21,13 +21,11 @@ sp.read_h5ad(file=file_path)
 ```python
 sp.fit_pattern(n_comp=20, n_top_genes=200, min_cells=200)
 
-** n_comp **： number
-of
-components
-for each GMM model
-** min_cells **：
-
 ```
+**n_comp**： Number of components for each GMM model
+**min_cells**: 
+
+
 
 ### Build distance array
 
@@ -39,8 +37,9 @@ sp.build_distance_array()
 
 ```python
 spf.cluster(n_clusters=6)
-** n_clusters **
 ```
+** n_clusters **
+
 
 ### Result & Visualization
 
