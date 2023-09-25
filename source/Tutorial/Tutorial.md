@@ -21,7 +21,12 @@ sp.read_h5ad(file=file_path)
 ```python
 sp.fit_pattern(n_comp=20, n_top_genes=200, min_cells=200)
 
-n_comp=20:Each GMM model has 10 components.
+** n_comp **： number
+of
+components
+for each GMM model
+** min_cells **：
+
 ```
 
 ### Build distance array
@@ -30,12 +35,11 @@ n_comp=20:Each GMM model has 10 components.
 sp.build_distance_array()
 ```
 
-
-
 ### build distance matrix & clustering
 
 ```python
 spf.cluster(n_clusters=6)
+** n_clusters **
 ```
 
 ### Result & Visualization
@@ -48,19 +52,19 @@ spf.genes_labels
 
 The output looks like the following:
 
-|    | gene_id        | labels |
-|----|----------------|--------|
-| 0  | Cldn5          | 2      |
-| 1  | Fyco1          | 2      |
-| 2  | Pmepa1         | 2      |
-| 3  | Arhgap5        | 0      |
-| 4  | Apc            | 5      |
-| .. | ...            | ...    |
-| 95 | Cyp2a5         | 0      |
-| 96 | X5730403I07Rik | 0      |
-| 97 | Ltbp2          | 2      |
-| 98 | Rbp4           | 4      |
-| 99 | Hist1h1e       | 4      |
+|     | gene_id        | labels |
+|-----|----------------|--------|
+| 0   | Cldn5          | 2      |
+| 1   | Fyco1          | 2      |
+| 2   | Pmepa1         | 2      |
+| 3   | Arhgap5        | 0      |
+| 4   | Apc            | 5      |
+| ..  | ...            | ...    |
+| 95  | Cyp2a5         | 0      |
+| 96  | X5730403I07Rik | 0      |
+| 97  | Ltbp2          | 2      |
+| 98  | Rbp4           | 4      |
+| 99  | Hist1h1e       | 4      |
 
 To visualize the patterns by heatmap:
 
