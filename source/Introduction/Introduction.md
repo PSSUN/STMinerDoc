@@ -17,7 +17,7 @@ STMiner is implemented as an open-source Python package and is available for use
 ### Multidimensional scaling
 
 
-<div><iframe allowtransparency="yes" frameborder="0" width="420" height="400" src="../_static/mds.html"/></div>
+<div><iframe allowtransparency="yes" frameborder="0" width="420" height="400" src="../_static/mds.html"/></iframe></div>
 
 
 **Referance**:
