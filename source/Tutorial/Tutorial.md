@@ -76,3 +76,19 @@ To visualize the genes expression heatmap by labels:
 ```python
 plot_heatmap(label=0, vmax=95)
 ```
+
+### Marked region
+
+```python
+# Open the GUI of STMiner
+sp.app.run()
+```
+Load the image in UI:
+
+<div style="text-align: center"><img src="../_static/t1.png" width="600" height="600" title="STMiner UI"><p align="center">Load the image</p></div>
+
+Cut the image:
+
+<div style="text-align: center"><img src="../_static/t2.png" width="600" height="600" title="STMiner UI"><p align="center">Cut the image</p></div>
+
+Mark the image:
