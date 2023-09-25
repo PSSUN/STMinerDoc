@@ -10,15 +10,17 @@ STMiner is implemented as an open-source Python package and is available for use
 
 ## Algorithm Detail
 
-<div><img src="../_static/fig1.png" width="1000" height="800" title="Overview"><p align="center">Overview of STMiner</p></div>
+<div><img src="../_static/fig1.png" width="1000" height="800" title="STMiner"><p align="center">Overview of STMiner</p></div>
 
 
 ### Fit the Guassian Mixture Model
 
+
+
 ### Build th Distance Array
 
 **Referance**:
- - []()
+ - Pardo, L. (2018). [Statistical Inference Based on Divergence Measures](https://books.google.com.hk/books?hl=zh-CN&lr=&id=ziDGGIkhqlMC&oi=fnd&pg=PP1&dq=Statistical+Inference+Based+on+Divergence+Measures&ots=m2kkDlPgy0&sig=uk9VT6URrdxIVZV4eMlxZJ1iHYk&redir_esc=y#v=onepage&q&f=false)
 
 ### Multidimensional scaling
 
@@ -29,7 +31,7 @@ STMiner is implemented as an open-source Python package and is available for use
  - [Modern Multidimensional Scaling - Theory and Applications](https://link.springer.com/book/10.1007/0-387-28981-X)
  - [Nonmetric multidimensional scaling: a numerical method](http://cda.psych.uiuc.edu/psychometrika_highly_cited_articles/kruskal_1964b.pdf)
  - [Multidimensional scaling by optimizing goodness of fit to a nonmetric hypothesis](http://cda.psych.uiuc.edu/psychometrika_highly_cited_articles/kruskal_1964a.pdf)
- - [Wikipedia: Multidimensional scaling](https://en.wikipedia.org/wiki/Multidimensional_scaling)
+ - Wikipedia: [Multidimensional scaling](https://en.wikipedia.org/wiki/Multidimensional_scaling)
 
 ### Cluster the genes
 
