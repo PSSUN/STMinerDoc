@@ -12,13 +12,13 @@
 
 <div><img src="../_static/fig1.png" width="1000" height="800" title="STMiner"><p align="center">Overview of STMiner</p></div>
 
-&emsp;The spatial distribution of gene expression <img src="../_static/p1.png" alt="P" width="55"/> was characterized using Gaussian Mixture Modeling (GMM), and a distance array was constructed by computing the Hellinger distance following the optimal matching of each GMM component. Each gene distribution within the distance array was projected into a lower-dimensional space and assigned distinct features.  
+&emsp;The spatial distribution of gene expression <img src="../_static/f1.png" width="8%"/> was characterized using Gaussian Mixture Modeling (GMM), and a distance array was constructed by computing the Hellinger distance following the optimal matching of each GMM component. Each gene distribution within the distance array was projected into a lower-dimensional space and assigned distinct features.  
 &emsp;Subsequently, genes were clustered based on their distribution features, and the expression pattern of each cluster was calculated.  
 &emsp;Additionally, cross-modal data can also map to each other by STMiner under the mixture model.
 
 ### Fit the Guassian Mixture Model
 
-
+<img src="../_static/f2.png" width="50%"/>
 
 ### Build th Distance Array
 
