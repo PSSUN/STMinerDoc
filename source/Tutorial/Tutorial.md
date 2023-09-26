@@ -23,7 +23,7 @@ sp.fit_pattern(n_comp=20, n_top_genes=200, min_cells=200)
 
 ```
 **n_comp**： Number of components for each GMM model
-**min_cells**: 
+**min_cells**: Remove the genes that expressed spots counts less than [min_cells]
 
 
 
