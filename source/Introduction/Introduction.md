@@ -26,7 +26,7 @@
 
 **Referance**:
  - Pardo, L. (2018). [Statistical Inference Based on Divergence Measures](https://books.google.com.hk/books?hl=zh-CN&lr=&id=ziDGGIkhqlMC&oi=fnd&pg=PP1&dq=Statistical+Inference+Based+on+Divergence+Measures&ots=m2kkDlPgy0&sig=uk9VT6URrdxIVZV4eMlxZJ1iHYk&redir_esc=y#v=onepage&q&f=false)
-
+ - Wikipedia: [Hellinger distance](https://en.wikipedia.org/wiki/Hellinger_distance)
 ### Multidimensional scaling
 
 
