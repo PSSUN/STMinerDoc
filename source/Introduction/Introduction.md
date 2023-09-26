@@ -13,7 +13,9 @@
 <div><img src="../_static/fig1.png" width="1000" height="800" title="STMiner"><p align="center">Overview of STMiner</p></div>
 
 &emsp;The spatial distribution of gene expression <img src="../_static/f1.png" width="55px"/> was characterized using Gaussian Mixture Modeling (GMM), and a distance array was constructed by computing the Hellinger distance following the optimal matching of each GMM component. Each gene distribution within the distance array was projected into a lower-dimensional space and assigned distinct features.  
+<br>
 &emsp;Subsequently, genes were clustered based on their distribution features, and the expression pattern of each cluster was calculated.  
+<br>
 &emsp;Additionally, cross-modal data can also map to each other by STMiner under the mixture model.
 
 ### Fit the Guassian Mixture Model
@@ -29,6 +31,12 @@
  - Wikipedia: [Hellinger distance](https://en.wikipedia.org/wiki/Hellinger_distance)
 ### Multidimensional scaling
 
+&emsp;After the distance array was generated, STMiner find out the low dimensions embedding of distance array by Multidimensional Scaling.<br><br>
+&emsp;Multidimensional scaling (MDS) is a means of visualizing the level of similarity of individual cases of a dataset. MDS is used to translate "information about the pairwise 'distances' among a set of n objects or individuals" into a configuration of n points mapped into an abstract Cartesian space.
+
+&emsp;Here's an example that embedding 3D data into 2D use MDS:
+
+---
 
 <div>
 <div style="text-align: center">
@@ -36,8 +44,12 @@
 <p align="center">High Dimension Data</p></div>
 <div style="text-align: center">
 <img src="../_static/p1.png" width="440" style="text-align: center" />
-<p style="text-align: center">After MDS</p></div>
+<p style="text-align: center">2D embedding after MDS</p></div>
 </div>
+
+---
+
+&emsp;More technically, MDS refers to a set of related ordination techniques used in information visualization, in particular to display the information contained in a distance matrix. It is a form of non-linear dimensionality reduction.
 
 
 **Referance**:
@@ -47,3 +59,7 @@
  - Wikipedia: [Multidimensional scaling](https://en.wikipedia.org/wiki/Multidimensional_scaling)
 
 ### Cluster the genes
+
+
+
+K-Means
