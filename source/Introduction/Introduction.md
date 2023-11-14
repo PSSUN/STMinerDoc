@@ -1,5 +1,6 @@
 # Introduction
 
+
 ## Abstract
 &emsp;Spatial transcriptomics revolutionizes transcriptomics by incorporating positional information. However, an emergency problem is to find out the gene expression pattern which can reveal the special region in tissue and find out the genes only expression in those regions. 
 
@@ -7,6 +8,7 @@
 
 &emsp;STMiner is implemented as an open-source Python package and is available for use at [STMiner](https://github.com/PSSUN/STMiner).
 
+---
 
 ## Algorithm Detail
 
@@ -22,7 +24,7 @@
 
 <img src="../_static/f2.png" width="280px"/>
 
-### Build th Distance Array
+### Build the Distance Array
 
 
 
@@ -36,7 +38,6 @@
 
 &emsp;Here's an example that embedding 3D data into 2D use MDS:
 
----
 
 <div>
 <div style="text-align: center">
@@ -47,7 +48,6 @@
 <p style="text-align: center">2D embedding after MDS</p></div>
 </div>
 
----
 
 &emsp;More technically, MDS refers to a set of related ordination techniques used in information visualization, in particular to display the information contained in a distance matrix. It is a form of non-linear dimensionality reduction.
 
@@ -59,7 +59,3 @@
  - Wikipedia: [Multidimensional scaling](https://en.wikipedia.org/wiki/Multidimensional_scaling)
 
 ### Cluster the genes
-
-
-
-K-Means
