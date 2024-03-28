@@ -23,6 +23,7 @@
 
 ### Find SVG
 
+STMiner estimates the spatial variation level (SVL) by calculating the optimal transmission distance from gene spatial distribution to overall spatial distribution to identify the spatial variable genes. 
 <div style="text-align: center">
 <img src="../_static/ot.png" width="500" style="text-align: center" />
 <p style="text-align: center">Find SVG by Optimal Transmission</p>
@@ -30,16 +31,31 @@
 
 ### Fit the Guassian Mixture Model
 
-<img src="../_static/f2.png" width="280px"/>
+<div style="text-align: center">
+<img src="../_static/f2.png" width="400" style="text-align: center" />
+<p style="text-align: center">GMM</p>
+</div>
 
-### Build the Distance Array
+<div style="text-align: center">
+<img src="../_static/fit_gmm.png" width="400" style="text-align: center" />
+<p style="text-align: center">Fit GMM</p>
+</div>
 
+### Build the Distance Array 
+
+
+<div style="text-align: center">
+<img src="../_static/distance.png" width="400" style="text-align: center" />
+<p style="text-align: center">Find SVG by Optimal Transmission</p>
+</div>
 
 
 **Referance**:
  - Pardo, L. (2018). [Statistical Inference Based on Divergence Measures](https://books.google.com.hk/books?hl=zh-CN&lr=&id=ziDGGIkhqlMC&oi=fnd&pg=PP1&dq=Statistical+Inference+Based+on+Divergence+Measures&ots=m2kkDlPgy0&sig=uk9VT6URrdxIVZV4eMlxZJ1iHYk&redir_esc=y#v=onepage&q&f=false)
  - Wikipedia: [Hellinger distance](https://en.wikipedia.org/wiki/Hellinger_distance)
-### Multidimensional scaling
+
+
+### Multidimensional scaling & Cluster the genes
 
 &emsp;After the distance array was generated, STMiner find out the low dimensions embedding of distance array by Multidimensional Scaling.<br><br>
 &emsp;Multidimensional scaling (MDS) is a means of visualizing the level of similarity of individual cases of a dataset. MDS is used to translate "information about the pairwise 'distances' among a set of n objects or individuals" into a configuration of n points mapped into an abstract Cartesian space.
@@ -66,4 +82,3 @@
  - Kruskal, J. Psychometrika, 29, (1964) [Multidimensional scaling by optimizing goodness of fit to a nonmetric hypothesis](http://cda.psych.uiuc.edu/psychometrika_highly_cited_articles/kruskal_1964a.pdf)
  - Wikipedia: [Multidimensional scaling](https://en.wikipedia.org/wiki/Multidimensional_scaling)
 
-### Cluster the genes
