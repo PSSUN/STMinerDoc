@@ -45,7 +45,7 @@ STMiner estimates the spatial variation level (SVL) by calculating the optimal t
 
 
 <div style="text-align: center">
-<img src="../_static/distance.png" width="400" style="text-align: center" />
+<img src="../_static/distance.png" width="420" style="text-align: center" />
 <p style="text-align: center">Find SVG by Optimal Transmission</p>
 </div>
 
