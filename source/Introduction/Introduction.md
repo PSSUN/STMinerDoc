@@ -20,6 +20,14 @@
 <br>
 &emsp;Additionally, cross-modal data can also map to each other by STMiner under the mixture model.
 
+
+### Find SVG
+
+<div style="text-align: center">
+<img src="../_static/ot.png" width="500" style="text-align: center" />
+<p style="text-align: center">Find SVG by Optimal Transmission</p>
+</div>
+
 ### Fit the Guassian Mixture Model
 
 <img src="../_static/f2.png" width="280px"/>
