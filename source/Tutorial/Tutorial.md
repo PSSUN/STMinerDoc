@@ -11,7 +11,7 @@ from STMiner.SPFinder import SPFinder
 ### Load data
 
 ```python
-file_path = 'I://human/10X_Visium_hunter2021spatially_sample_C_data.h5ad'
+file_path = 'I://10X_Visium_hunter2021spatially_sample_C_data.h5ad'
 sp = SPFinder()
 sp.read_h5ad(file=file_path)
 ```
