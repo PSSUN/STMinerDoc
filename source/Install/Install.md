@@ -13,6 +13,3 @@ Install STMiner:
 ```bash
 pip install STMiner
 ```
-
-## conda
-TODO
