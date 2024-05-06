@@ -19,7 +19,8 @@ sp.read_h5ad(file=file_path)
 ### Find SVG
 
 ```python
-sp.fit_pattern(n_comp=20, n_top_genes=200, min_cells=200)
+sp.get_genes_csr_array(min_cells=50)
+sp.spatial_high_variable_genes()
 ```
 
 ### Fit GMM
@@ -76,7 +77,14 @@ To visualize the patterns by heatmap:
 
 ```python
 sp.get_pattern_array()
-sp.plot.plot_pattern(vmax=99, reverse_y=True, reverse_x=True, s=5, output_path='./Adult.eps')
+sp.plot.plot_pattern(heatmap=False,
+                     s=5,
+                     rotate=True,
+                     reverse_y=True,
+                     reverse_x=True,
+                     vmax=95,
+                     cmap='Spectral_r',
+                     output_path='./')
 ```
 
 **s**: Spot size 
@@ -90,7 +98,7 @@ sp.plot.plot_genes(label=0, n_gene=8, s=5, reverse_y=True, reverse_x=True)
 **n_gene**: Number of genes to visualize
 
 
-### Additional function - Marked region
+### Additional function - Marked region (Disable in current version)
 
 ```python
 # Open the GUI of STMiner
