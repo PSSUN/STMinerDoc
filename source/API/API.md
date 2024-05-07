@@ -15,14 +15,11 @@
 
 ### load data
 - read_h5ad()
-- read_gem()
-- merge_bin()
+- read_gem_file()
 
 
 ### preprocess
 - fit_pattern()
-- normalize()
-- log1p()
 
 
 ### fit model
