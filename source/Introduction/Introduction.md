@@ -12,7 +12,7 @@
 
 ## Algorithm Detail
 
-<div><img src="../_static/fig1.png" width="1000" height="800" title="STMiner"><p align="center">Overview of STMiner</p></div>
+<div><img src="../_static/methods.png" width="1000" height="800" title="STMiner"><p align="center">Overview of STMiner</p></div>
 
 &emsp;The spatial distribution of gene expression <img src="../_static/f1.png" width="55px"/> was characterized using Gaussian Mixture Modeling (GMM), and a distance array was constructed by computing the Hellinger distance following the optimal matching of each GMM component. Each gene distribution within the distance array was projected into a lower-dimensional space and assigned distinct features.  
 <br>
