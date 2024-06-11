@@ -43,7 +43,7 @@ STMiner estimates the spatial variation level (SVL) by calculating the optimal t
 </div>
 
 
-### Build the Distance Array 
+### Transport distance between GMMs 
 
 
 <div style="text-align: center">
