@@ -21,14 +21,6 @@
 &emsp;Additionally, cross-modal data can also map to each other by STMiner under the mixture model.
 
 
-### Find SVG
-
-STMiner estimates the spatial variation level (SVL) by calculating the optimal transmission distance from gene spatial distribution to overall spatial distribution to identify the spatial variable genes. 
-<div style="text-align: center">
-<img src="../_static/ot.png" width="500" style="text-align: center" />
-<p style="text-align: center">Find SVG by Optimal Transmission</p>
-</div>
-
 ### Fit the Guassian Mixture Model
 
 <div style="text-align: center">
@@ -40,6 +32,16 @@ STMiner estimates the spatial variation level (SVL) by calculating the optimal t
 <img src="../_static/fit_gmm.png" width="400" style="text-align: center" />
 <p style="text-align: center">Fit GMM</p>
 </div>
+
+
+### Find SVG
+
+STMiner estimates the spatial variation level (SVL) by calculating the optimal transmission distance from gene spatial distribution to overall spatial distribution to identify the spatial variable genes. 
+<div style="text-align: center">
+<img src="../_static/ot.png" width="500" style="text-align: center" />
+<p style="text-align: center">Find SVG by Optimal Transmission</p>
+</div>
+
 
 ### Build the Distance Array 
 
