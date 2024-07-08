@@ -96,20 +96,3 @@ To visualize the genes by labels:
 sp.plot.plot_genes(label=0, n_gene=8, s=5, reverse_y=True, reverse_x=True)
 ```
 **n_gene**: Number of genes to visualize
-
-
-### Additional function - Marked region (Disable in current version)
-
-```python
-# Open the GUI of STMiner
-sp.app.run()
-```
-Load the image in UI:
-
-<div style="text-align: center"><img src="../_static/t1.png" width="300" height="300" title="STMiner UI"><p align="center">Load the image</p></div>
-
-Cut the image:
-
-<div style="text-align: center"><img src="../_static/t2.png" width="300" height="300" title="STMiner UI"><p align="center">Cut the image</p></div>
-
-Mark the image:
