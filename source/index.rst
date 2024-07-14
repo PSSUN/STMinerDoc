@@ -15,6 +15,7 @@ Welcome to STMiner's documentation!
    Install/Install
    Tutorial/Tutorial
    API/API
+   Benchmark/Benchmark
 
 
 
