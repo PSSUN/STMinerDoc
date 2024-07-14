@@ -132,19 +132,19 @@ for tag in [
                                               '-Additive Chi-Square Kernel', 'Minkowski Distance'])
     for gene in tqdm(hotspot, desc='hotspot'):
         Y = total_dict[gene].toarray()
-        # 计算余弦相似度
+        
         cosine_sim = cosine_similarity(X, Y)[0][0]
         hotspot_result_df['1/Cosine Similarity'][gene] = 1 / cosine_sim
-        # 计算欧几里得距离
+        
         euclidean_dist = euclidean_distances(X, Y)[0][0]
         hotspot_result_df['Euclidean Distances'][gene] = euclidean_dist
-        # 计算曼哈顿距离
+        
         manhattan_dist = manhattan_distances(X, Y)[0][0]
         hotspot_result_df['Manhattan Distances'][gene] = manhattan_dist
-        # 计算加法卡方核
+        
         additive_chi2_ker = additive_chi2_kernel(X, Y)[0][0]
         hotspot_result_df['-Additive Chi-Square Kernel'][gene] = -additive_chi2_ker
-        # 计算闵可夫斯基距离
+        
         p = 3
         minkowski_dist = np.sum(np.abs(X - Y) ** p) ** (1 / p)
         hotspot_result_df['Minkowski Distance'][gene] = minkowski_dist
@@ -156,19 +156,19 @@ for tag in [
                                               '-Additive Chi-Square Kernel', 'Minkowski Distance'])
     for gene in stminer:
         Y = total_dict[gene].toarray()
-        # 计算余弦相似度
+        
         cosine_sim = cosine_similarity(X, Y)[0][0]
         stminer_result_df['1/Cosine Similarity'][gene] = 1 / cosine_sim
-        # 计算欧几里得距离
+        
         euclidean_dist = euclidean_distances(X, Y)[0][0]
         stminer_result_df['Euclidean Distances'][gene] = euclidean_dist
-        # 计算曼哈顿距离
+        
         manhattan_dist = manhattan_distances(X, Y)[0][0]
         stminer_result_df['Manhattan Distances'][gene] = manhattan_dist
-        # 计算加法卡方核
+        
         additive_chi2_ker = additive_chi2_kernel(X, Y)[0][0]
         stminer_result_df['-Additive Chi-Square Kernel'][gene] = -additive_chi2_ker
-        # 计算闵可夫斯基距离
+        
         p = 3
         minkowski_dist = np.sum(np.abs(X - Y) ** p) ** (1 / p)
         stminer_result_df['Minkowski Distance'][gene] = minkowski_dist
@@ -180,19 +180,19 @@ for tag in [
                                              '-Additive Chi-Square Kernel', 'Minkowski Distance'])
     for gene in seurat:
         Y = total_dict[gene].toarray()
-        # 计算余弦相似度
+        
         cosine_sim = cosine_similarity(X, Y)[0][0]
         seurat_result_df['1/Cosine Similarity'][gene] = 1 / cosine_sim
-        # 计算欧几里得距离
+        
         euclidean_dist = euclidean_distances(X, Y)[0][0]
         seurat_result_df['Euclidean Distances'][gene] = euclidean_dist
-        # 计算曼哈顿距离
+        
         manhattan_dist = manhattan_distances(X, Y)[0][0]
         seurat_result_df['Manhattan Distances'][gene] = manhattan_dist
-        # 计算加法卡方核
+        
         additive_chi2_ker = additive_chi2_kernel(X, Y)[0][0]
         seurat_result_df['-Additive Chi-Square Kernel'][gene] = -additive_chi2_ker
-        # 计算闵可夫斯基距离
+        
         p = 3
         minkowski_dist = np.sum(np.abs(X - Y) ** p) ** (1 / p)
         seurat_result_df['Minkowski Distance'][gene] = minkowski_dist
@@ -203,19 +203,19 @@ for tag in [
                                                 '-Additive Chi-Square Kernel', 'Minkowski Distance'])
     for gene in spatialde:
         Y = total_dict[gene].toarray()
-        # 计算余弦相似度
+        
         cosine_sim = cosine_similarity(X, Y)[0][0]
         spatialde_result_df['1/Cosine Similarity'][gene] = 1 / cosine_sim
-        # 计算欧几里得距离
+        
         euclidean_dist = euclidean_distances(X, Y)[0][0]
         spatialde_result_df['Euclidean Distances'][gene] = euclidean_dist
-        # 计算曼哈顿距离
+        
         manhattan_dist = manhattan_distances(X, Y)[0][0]
         spatialde_result_df['Manhattan Distances'][gene] = manhattan_dist
-        # 计算加法卡方核
+        
         additive_chi2_ker = additive_chi2_kernel(X, Y)[0][0]
         spatialde_result_df['-Additive Chi-Square Kernel'][gene] = -additive_chi2_ker
-        # 计算闵可夫斯基距离
+        
         p = 3
         minkowski_dist = np.sum(np.abs(X - Y) ** p) ** (1 / p)
         spatialde_result_df['Minkowski Distance'][gene] = minkowski_dist
@@ -230,7 +230,7 @@ for tag in [
 
     fig, axes = plt.subplots(1, 5, figsize=(12, 3.5))
     colors = ['#a07f64', '#a9bc76', '#d99b3f', '#5862ab']
-    # 在第一个子图上绘制箱线图
+
     sns.boxplot([list(stminer_result_df['Euclidean Distances']),
                  list(hotspot_result_df['Euclidean Distances']),
                  list(seurat_result_df['Euclidean Distances']),
@@ -255,7 +255,7 @@ for tag in [
                                    ('stMINER', 'SpatialDE')],
                         test='Mann-Whitney', text_format='star', loc='outside', verbose=2)
     #######################################################################################################
-    # 在第二个子图上绘制散点图
+
     sns.boxplot([list(stminer_result_df['1/Cosine Similarity']),
                  list(hotspot_result_df['1/Cosine Similarity']),
                  list(seurat_result_df['1/Cosine Similarity']),
@@ -284,7 +284,6 @@ for tag in [
                  list(spatialde_result_df['Manhattan Distances'])], showfliers=False, ax=axes[3], width=.5,
                 palette=colors)
     axes[3].set_ylabel('Manhattan Distances', fontname="Arial", fontsize=10)
-    # axes[1, 0].set_ylim(250, 2200)
     data_Manhattan = pd.DataFrame({
         'Method': ['stMINER'] * len(stminer_result_df) +
                   ['Hotspot'] * len(hotspot_result_df) +
