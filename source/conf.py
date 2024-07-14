@@ -23,8 +23,8 @@ source_parsers = {
 source_suffix = ['.rst', '.md']
 
 project = 'STMiner'
-copyright = '2023, pssun'
-author = 'pssun'
+copyright = '2024, pssun'
+author = 'Peisen Sun'
 
 # The full version, including alpha/beta/rc tags
 release = '1.0'
