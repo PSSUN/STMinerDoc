@@ -4,7 +4,7 @@
 ## Abstract
 &emsp;Spatial transcriptomics revolutionizes transcriptomics by incorporating positional information. However, an emergency problem is to find out the gene expression pattern which can reveal the special region in tissue and find out the genes only expression in those regions. 
 
-&emsp;Here we propose “**STMiner**” based on the Gaussian mixture model to solve this problem. STMiner is a bottom-up methodology algorithm. It is initiated by fitting a parametric model of gene spatial distributions and constructing a distance array between them utilizing the Hellinger distance. Genes are clustered, thereby recognizing spatial co-expression patterns across distinct gene classes.
+&emsp;Here we propose “**STMiner**” based on the Gaussian mixture model to solve this problem. STMiner is a bottom-up methodology algorithm. It is initiated by fitting a parametric model of gene spatial distributions and constructing a distance array between them utilizing the optimal transport and [Hellinger distance](https://en.wikipedia.org/wiki/Hellinger_distance). Genes are clustered, thereby recognizing spatial co-expression patterns across distinct gene classes.
 
 &emsp;STMiner is implemented as an open-source Python package and is available for use at [STMiner](https://github.com/PSSUN/STMiner).
 
@@ -54,7 +54,7 @@ The value of each small box in the green matrix can be calculated by the followi
 
 <div style="text-align: center">
 <img src="../_static/f3.png" width="640" style="text-align: center" />
-<p style="text-align: center">Hellinger Distance between two GMM components.</p>
+<p style="text-align: center">Hellinger Distance between two GMM components</p>
 </div>
 For more details, please refer to the papers. (Coming soon. Under review.)
 
