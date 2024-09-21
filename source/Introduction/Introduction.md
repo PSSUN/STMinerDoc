@@ -51,6 +51,11 @@ STMiner estimates the spatial variation level (SVL) by calculating the optimal t
 <p style="text-align: center">Find SVG by Optimal Transmission</p>
 </div>
 
+<div style="text-align: center">
+<img src="../_static/f3.png" width="400" style="text-align: center" />
+<p style="text-align: center">Helinger Distance between two GMM components</p>
+</div>
+
 
 **Referance**:
  - Pardo, L. (2018). [Statistical Inference Based on Divergence Measures](https://books.google.com.hk/books?hl=zh-CN&lr=&id=ziDGGIkhqlMC&oi=fnd&pg=PP1&dq=Statistical+Inference+Based+on+Divergence+Measures&ots=m2kkDlPgy0&sig=uk9VT6URrdxIVZV4eMlxZJ1iHYk&redir_esc=y#v=onepage&q&f=false)
