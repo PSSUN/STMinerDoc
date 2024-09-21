@@ -83,6 +83,8 @@ For more details, please refer to the papers. (Coming soon. Under review.)
 
 &emsp;More technically, MDS refers to a set of related ordination techniques used in information visualization, in particular to display the information contained in a distance matrix. It is a form of non-linear dimensionality reduction.
 
+Finally, [K-Means](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html) was employed to conduct clustering on the genes from the embedding space. 
+
 
 **Referance**:
  - Borg, I.; Groenen P. Springer Series in Statistics (1997) [Modern Multidimensional Scaling - Theory and Applications](https://link.springer.com/book/10.1007/0-387-28981-X)
