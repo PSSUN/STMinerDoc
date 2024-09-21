@@ -53,8 +53,8 @@ STMiner estimates the spatial variation level (SVL) by calculating the optimal t
 The value of each small box in the green matrix can be calculated by the following formula:
 
 <div style="text-align: center">
-<img src="../_static/f3.png" width="600" style="text-align: center" />
-<p style="text-align: center">Helinger Distance between two GMM components</p>
+<img src="../_static/f3.png" width="640" style="text-align: center" />
+<p style="text-align: center">Hellinger Distance between two GMM components.</p>
 </div>
 For more details, please refer to the papers. (Coming soon. Under review.)
 
