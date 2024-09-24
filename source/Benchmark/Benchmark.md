@@ -28,7 +28,6 @@ def stminer_svg(file):
     df = sp.global_distance
     df.to_csv('E://benchmark/benchmark/stminer_' + pre + '_50.csv')
 
-
 def hotspot_svg(file):
     adata = sc.read_h5ad(file)
     name = os.path.basename(file)
@@ -53,7 +52,6 @@ def hotspot_svg(file):
     hs_results = hs.compute_autocorrelations()
     hs_results.to_csv('E://benchmark/benchmark/hotspots_' + pre + '_50.csv')
 
-
 def spatial_de_svg(file):
     name = os.path.basename(file)
     pre = name.split('.')[0]
@@ -76,7 +74,6 @@ def spatial_de_svg(file):
 
     sign_results.to_csv('E://benchmark/spatialde_' + pre + '_50.csv')
 
-
 if __name__ == '__main__':
     # current_dir is the h5ad file dir
     current_dir = 'E://benchmark_data'
@@ -88,7 +85,6 @@ if __name__ == '__main__':
                 process_h5ad_file(h5ad_file_path)
                 
 ```
-
 
 ## Compare SVG and non-SVG 
 

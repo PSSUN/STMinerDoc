@@ -1,13 +1,17 @@
 # API
 
-## Attribute of STMiner
+## Main Attributes of STMiner
 
-| Attribute           | Type         | Description                        |
-|---------------------|--------------|------------------------------------|
-| adata               | Anndata      | Anndata for loaded spatial data    |
-| genes_patterns      | dict         | GMM model for each gene            |
-| genes_distance_aray | pd. DataFrame | Distance between each GMM          |
-| genes_labels        | pd. DataFrame | Gene name and their pattern labels |
+| Attributes           | Type          | Description                            |
+| -------------------- | ------------- | -------------------------------------- |
+| adata                | Anndata       | Anndata for loaded spatial data        |
+| patterns             | dict          | Spatial distributions pattern of genes |
+| genes_patterns       | dict          | GMM model for each gene                |
+| global_distance      | pd. DataFrame | Distances between genes and background |
+| mds_features         | array         | embedding features of genes            |
+| genes_distance_array | pd. DataFrame | Distance between each GMM              |
+| genes_labels         | pd. DataFrame | Gene name and their pattern labels     |
+| plot                 | Object        | Call plot to visualization             |
 
 ## Main Methods of STMiner 
 
@@ -29,8 +33,8 @@
 
 ### visualization
 
-* plot_pattern()
-* plot_intersection()
-* plot_heatmap()
-* plot_genes()
-* plot_gene()
+* plot.plot_pattern()
+* plot.plot_intersection()
+* plot.plot_heatmap()
+* plot.plot_genes()
+* plot.plot_gene()
