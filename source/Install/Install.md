@@ -15,7 +15,7 @@ pip3 install STMiner
 
 ## Or you can just clone STMiner from Github and install by yourself
 
-Download STMiner from https://github.com/xjtu-omics/STMiner.git and run:
+Download STMiner [here](https://github.com/xjtu-omics/STMiner.git) and unzip, then run:
 
 ```bash
 pip3 install -r requirements.txt

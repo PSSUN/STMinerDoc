@@ -98,4 +98,12 @@ sp.plot.plot_genes(label=0, n_gene=8, s=5, reverse_y=True, reverse_x=True)
 
 **n_gene**: Number of genes to visualize
 
+---
+
 ## HCC
+
+### import package
+
+```python
+from STMiner.SPFinder import SPFinder
+```

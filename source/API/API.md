@@ -13,6 +13,8 @@
 | genes_labels         | pd. DataFrame | Gene name and their pattern labels     |
 | plot                 | Object        | Call plot to visualization             |
 
+---
+
 ## Main Methods of STMiner 
 
 ### load data
