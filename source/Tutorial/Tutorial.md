@@ -29,11 +29,11 @@ sp.spatial_high_variable_genes()
 sp.fit_pattern(n_comp=10, gene_list=list(sp.global_distance[:2000]['Gene']))
 
 ```
+
 **n_comp**： Number of components for each GMM model
 </br>
 **gene_list**: Gene list to fit GMM model
 </br>
-
 
 ### Build distance array
 
@@ -46,8 +46,8 @@ sp.build_distance_array()
 ```python
 sp.cluster(n_clusters=6)
 ```
-**n_clusters**: Number of cluster
 
+**n_clusters**: Number of cluster
 
 ### Result & Visualization
 
@@ -95,4 +95,7 @@ To visualize the genes by labels:
 ```python
 sp.plot.plot_genes(label=0, n_gene=8, s=5, reverse_y=True, reverse_x=True)
 ```
+
 **n_gene**: Number of genes to visualize
+
+## HCC
