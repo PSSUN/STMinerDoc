@@ -89,7 +89,15 @@ if __name__ == '__main__':
 ## Compare SVG and non-SVG 
 
 ```python
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
 
+from tqdm import tqdm
+from statannot import add_stat_annotation
+from sklearn.metrics.pairwise import (
+    cosine_similarity, euclidean_distances, manhattan_distances, additive_chi2_kernel
+)
 top = 2000
 
 for tag in [
@@ -113,11 +121,7 @@ for tag in [
     total_dict = {}
     for i in tqdm(tot, desc='Get csr...'):
         total_dict[i] = csr_matrix(np.array(scale_matrix(get_exp_array(sp.adata, i)).flatten().reshape(1, -1)))
-    import numpy as np
-    from tqdm import tqdm
-    from sklearn.metrics.pairwise import (
-        cosine_similarity, euclidean_distances, manhattan_distances, additive_chi2_kernel
-    )
+
 
     global_arr = scale_matrix(sp.plot.get_global_matrix(False, False, False).todense())
     X = np.array(global_arr.flatten().reshape(1, -1))
@@ -220,9 +224,7 @@ for tag in [
     stminer_result_df = stminer_result_df.dropna()
     seurat_result_df = seurat_result_df.dropna()
     spatialde_result_df = spatialde_result_df.dropna()
-    import seaborn as sns
-    import matplotlib.pyplot as plt
-    from statannot import add_stat_annotation
+
 
     fig, axes = plt.subplots(1, 5, figsize=(12, 3.5))
     colors = ['#a07f64', '#a9bc76', '#d99b3f', '#5862ab']
