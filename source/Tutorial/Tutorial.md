@@ -13,8 +13,10 @@ from STMiner.SPFinder import SPFinder
 ```python
 file_path = 'I://10X_Visium_hunter2021spatially_sample_C_data.h5ad'
 sp = SPFinder()
-sp.read_h5ad(file=file_path)
+sp.read_h5ad(file=file_path, bin_size=1)
 ```
+
+The parameter bin_size specifies the size of merged cells (spots). If not specified, no merging is performed. If set to 50, 50x50 cells/spots will be merged into a single cell/spot. Due to low sequencing depth in some datasets, cells/spots are often merged during analysis (e.g., stereo-seq). However, 10x data typically does not require merging.
 
 ### Find SVG
 
@@ -22,6 +24,8 @@ sp.read_h5ad(file=file_path)
 sp.get_genes_csr_array(min_cells=50)
 sp.spatial_high_variable_genes()
 ```
+
+The parameter min_cells was used to filter genes that are too sparse to generate a reliable spatial distribution.
 
 ### Fit GMM
 
@@ -102,8 +106,24 @@ sp.plot.plot_genes(label=0, n_gene=8, s=5, reverse_y=True, reverse_x=True)
 
 ## HCC
 
+The HCC ST data can be download [here](http://lifeome.net/supp/livercancer-st/data.htm)
+
 ### import package
 
 ```python
 from STMiner.SPFinder import SPFinder
+```
+### Load data
+
+```python
+file_path = 'I://HCC-1L.h5ad'
+sp = SPFinder()
+sp.read_h5ad(file=file_path)
+```
+
+### Find SVG
+
+```python
+sp.get_genes_csr_array(min_cells=50)
+sp.spatial_high_variable_genes()
 ```
