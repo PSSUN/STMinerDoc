@@ -16,7 +16,15 @@ sp = SPFinder()
 sp.read_h5ad(file=file_path, bin_size=1)
 ```
 
-The parameter bin_size specifies the size of merged cells (spots). If not specified, no merging is performed. If set to 50, 50x50 cells/spots will be merged into a single cell/spot. Due to low sequencing depth in some datasets, cells/spots are often merged during analysis (e.g., stereo-seq). However, 10x data typically does not require merging.
+The parameter **bin_size** specifies the size of merged cells (spots). If not specified, no merging is performed. If set to 50, 50x50 cells/spots will be merged into a single cell/spot. Due to low sequencing depth in some datasets, cells/spots are often merged during analysis (e.g., stereo-seq). However, 10x data typically does not require merging.
+
+The ST datasets was storaged in **.adata** object of **sp**, you can use **sp.adata** to check them:
+
+```python
+sp.adata
+```
+
+Besides, **sp** Obj has many useful attributes which can be used for visualization or integrated into other pipelines (such as scanpy). See [API](https://stminerdoc.readthedocs.io/en/latest/API/API.html) for more details.
 
 ### Find SVG
 
@@ -26,8 +34,11 @@ sp.spatial_high_variable_genes()
 ```
 
 You can see output while computing as follows:
-> Parsing distance array...: 100%|██████████| 10762/10762 [01:12<00:00, 149.11it/s]
-> Computing ot distances...:  10%|▉········| 1069/10762 [03:04<31:11,  6.12it/s]  
+
+```bash
+Parsing distance array...: 100%|██████████| 10762/10762 [01:12<00:00, 149.11it/s]
+Computing ot distances...:  10%|▉         | 1069/10762 [03:04<31:11,  6.12it/s]  
+```
 
 The parameter **min_cells** was used to filter genes that are too sparse to generate a reliable spatial distribution.
 
