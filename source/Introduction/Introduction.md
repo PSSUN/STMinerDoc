@@ -70,7 +70,6 @@ For more details, please refer to the papers. (Coming soon. Under review.)
 
 &emsp;Here's an example that embedding 3D data into 2D use MDS:
 
-
 <div>
 <div style="text-align: center">
 <iframe allowtransparency="yes" frameborder="0" width="460" height="316" src="../_static/mds.html"/ style="text-align: center"></iframe>
@@ -80,6 +79,10 @@ For more details, please refer to the papers. (Coming soon. Under review.)
 <p style="text-align: center">2D embedding after MDS</p></div>
 </div>
 
+Tips: plot is draggable.
+<div style="text-align: center">
+<img src="../_static/demo.gif" width="100" />
+<p style="text-align: center">demo</p></div>
 
 &emsp;More technically, MDS refers to a set of related ordination techniques used in information visualization, in particular to display the information contained in a distance matrix. It is a form of non-linear dimensionality reduction.
 
