@@ -27,7 +27,7 @@ sp.spatial_high_variable_genes()
 
 You can see output while computing as follows:
 > Parsing distance array...: 100%|██████████| 10762/10762 [01:12<00:00, 149.11it/s]
-> Computing ot distances...:  10%|▉         | 1069/10762 [03:04<31:11,  6.12it/s]  
+> Computing ot distances...:  10%|▉········| 1069/10762 [03:04<31:11,  6.12it/s]  
 
 The parameter **min_cells** was used to filter genes that are too sparse to generate a reliable spatial distribution.
 
