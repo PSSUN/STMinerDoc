@@ -81,7 +81,7 @@ For more details, please refer to the papers. (Coming soon. Under review.)
 
 
 <div style="text-align: left">
-Tips: plot is draggable.<img src="../_static/demo.gif" width="100" />
+Tips: plot is draggable.<img src="../_static/demo.gif" width="150" />
 </div>
 
 &emsp;More technically, MDS refers to a set of related ordination techniques used in information visualization, in particular to display the information contained in a distance matrix. It is a form of non-linear dimensionality reduction.

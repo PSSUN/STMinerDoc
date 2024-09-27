@@ -45,8 +45,13 @@ The parameter **min_cells** was used to filter genes that are too sparse to gene
 ### Fit GMM
 
 ```python
-sp.fit_pattern(n_comp=10, gene_list=list(sp.global_distance[:2000]['Gene']))
+sp.fit_pattern(n_comp=20, gene_list=list(sp.global_distance[:2000]['Gene']))
+```
 
+You can see output while computing as follows:
+
+```bash
+Fitting GMM...:  10%|▉         | 190/2000 [00:42<04:36,  6.54it/s] 
 ```
 
 **n_comp**： Number of components for each GMM model
