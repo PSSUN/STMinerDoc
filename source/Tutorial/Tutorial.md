@@ -29,9 +29,15 @@ Besides, **sp** Obj has many useful attributes which can be used for visualizati
 ### Find SVG
 
 ```python
-sp.get_genes_csr_array(min_cells=50)
+sp.get_genes_csr_array(min_cells=50, log1p=False)
 sp.spatial_high_variable_genes()
 ```
+The parameter **min_cells** was used to filter genes that are too sparse to generate a reliable spatial distribution.
+</br>
+The parameter **log1p** was used to avoid extreme values affecting the results. For most open-source h5ad files, log1p has already been executed, so the default value here is False.
+</br>
+You can perform STMiner in your interested gene sets. Use parameter **gene_list** to input the gene list to STMiner. Then, STMiner will only calculate the given gene set of the dataset.
+</br>
 
 You can see output while computing as follows:
 
@@ -40,7 +46,6 @@ Parsing distance array...: 100%|██████████| 10762/10762 [01:
 Computing ot distances...:  10%|▉         | 1069/10762 [03:04<31:11,  6.12it/s]  
 ```
 
-The parameter **min_cells** was used to filter genes that are too sparse to generate a reliable spatial distribution.
 
 ### Fit GMM
 
@@ -72,7 +77,7 @@ import seaborn as sns
 sns.clustermap(sp.genes_distance_array)
 ```
 
-<div align=center><img src="../_static/heatmap.png" height = "400"/></div>
+<div align=center><img src="../_static/heatmap.png" height = "200"/></div>
 
 ### build distance matrix & clustering
 
