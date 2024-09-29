@@ -27,7 +27,7 @@ copyright = '2024, pssun'
 author = 'Peisen Sun'
 
 # The full version, including alpha/beta/rc tags
-release = '1.0'
+release = '0.0.3'
 
 
 # -- General configuration ---------------------------------------------------

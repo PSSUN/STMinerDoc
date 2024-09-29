@@ -1,16 +1,23 @@
 # Introduction
 
-
 ## Abstract
 &emsp;Spatial transcriptomics revolutionizes transcriptomics by incorporating positional information. However, an emergency problem is to find out the gene expression pattern which can reveal the special region in tissue and find out the genes only expression in those regions. 
+
+Comparison of spot- and gene-based strategies for processing ST data.  
+<div><img src="../_static/abs.png" height="800" title="STMiner"><p align="center">Overview of STMiner</p></div>
+
+&emsp;STMiner processes ST data by leveraging the spatial distribution of genes, mitigating biases otherwise introduced by uneven cell density distribution, low sampling rates, and the complex spatial structures of tumor tissues. Key differences between spot- and gene-based strategies are illustrated on the left and right of the figure, respectively.   
+</br>
+(**Top**) Genes whose spatial structure is similar to background are typically misidentified as marker genes by spot-based methods, resulting in false positives. STMiner effectively removes this noise by comparing gene distributions with the background distribution.   
+(**Middle**) Spot-based strategies use the expression levels of genes within a spot as features for classification. However, lowly expressed genes are often filtered out due to their low frequency and weak signals, resulting in gaps in the final expression profile. In contrast, STMiner quantifies the distinctiveness of each gene’s expression pattern compared to the overall tissue distribution, irrespective of expression level.   
+(**Bottom**) Spot-based methods assign a label to each spot, so that overlapping regions may be mistakenly classified as belonging to separate clusters. In contrast, STMiner incorporates an unsupervised clustering step for its set of SVGs, allowing it to determine the spatial structures of each cluster, which may overlap.
+
+
+## Algorithm Detail
 
 &emsp;Here we propose “**STMiner**” based on the Gaussian mixture model to solve this problem. STMiner is a bottom-up methodology algorithm. It is initiated by fitting a parametric model of gene spatial distributions and constructing a distance array between them utilizing the optimal transport and [Hellinger distance](https://en.wikipedia.org/wiki/Hellinger_distance). Genes are clustered, thereby recognizing spatial co-expression patterns across distinct gene classes.
 
 &emsp;STMiner is implemented as an open-source Python package and is available for use at [STMiner](https://github.com/PSSUN/STMiner).
-
----
-
-## Algorithm Detail
 
 <div><img src="../_static/methods.png" width="1000" height="800" title="STMiner"><p align="center">Overview of STMiner</p></div>
 
@@ -81,7 +88,7 @@ For more details, please refer to the papers. (Coming soon. Under review.)
 
 
 <div style="text-align: left">
-Tips: plot is draggable.<img src="../_static/demo.gif" width="150" />
+Tips: plot is draggable.<img src="../_static/demo.gif" width="100" />
 </div>
 
 &emsp;More technically, MDS refers to a set of related ordination techniques used in information visualization, in particular to display the information contained in a distance matrix. It is a form of non-linear dimensionality reduction.
