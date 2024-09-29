@@ -17,23 +17,23 @@
 
 ## Main Methods of STMiner 
 
-### load data
+### Load data
 
 * read_h5ad()
 * read_stereo()
 * read_bmk()
 
-### preprocess
+### Preprocess
 
 * get_genes_csr_array()
 
-### fit model & clustering
+### Fit model & clustering
 
 * fit_pattern()
 * build_distance_array()
 * cluster()
 
-### visualization
+### Visualization
 
 * plot.plot_pattern()
 * plot.plot_intersection()
