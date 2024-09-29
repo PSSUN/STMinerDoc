@@ -75,7 +75,7 @@ def spatial_de_svg(file):
     sign_results.to_csv('E://benchmark/spatialde_' + pre + '_50.csv')
 
 if __name__ == '__main__':
-    # current_dir is the h5ad file dir
+    # current_dir is the h5ad file directory.
     current_dir = 'E://benchmark_data'
     for root, _, files in os.walk(current_dir):
         for file in files:
@@ -99,9 +99,9 @@ from sklearn.metrics.pairwise import (
     cosine_similarity, euclidean_distances, manhattan_distances, additive_chi2_kernel
 )
 top = 2000
-
+p = 3
 for tag in [
-    # file name in last step
+    # File names in last step.
 ]:
     print(tag)
     hotspot = list(pd.read_csv(
@@ -145,7 +145,6 @@ for tag in [
         additive_chi2_ker = additive_chi2_kernel(X, Y)[0][0]
         hotspot_result_df['-Additive Chi-Square Kernel'][gene] = -additive_chi2_ker
         
-        p = 3
         minkowski_dist = np.sum(np.abs(X - Y) ** p) ** (1 / p)
         hotspot_result_df['Minkowski Distance'][gene] = minkowski_dist
 
@@ -169,7 +168,6 @@ for tag in [
         additive_chi2_ker = additive_chi2_kernel(X, Y)[0][0]
         stminer_result_df['-Additive Chi-Square Kernel'][gene] = -additive_chi2_ker
         
-        p = 3
         minkowski_dist = np.sum(np.abs(X - Y) ** p) ** (1 / p)
         stminer_result_df['Minkowski Distance'][gene] = minkowski_dist
 
@@ -193,7 +191,6 @@ for tag in [
         additive_chi2_ker = additive_chi2_kernel(X, Y)[0][0]
         seurat_result_df['-Additive Chi-Square Kernel'][gene] = -additive_chi2_ker
         
-        p = 3
         minkowski_dist = np.sum(np.abs(X - Y) ** p) ** (1 / p)
         seurat_result_df['Minkowski Distance'][gene] = minkowski_dist
 
@@ -216,7 +213,6 @@ for tag in [
         additive_chi2_ker = additive_chi2_kernel(X, Y)[0][0]
         spatialde_result_df['-Additive Chi-Square Kernel'][gene] = -additive_chi2_ker
         
-        p = 3
         minkowski_dist = np.sum(np.abs(X - Y) ** p) ** (1 / p)
         spatialde_result_df['Minkowski Distance'][gene] = minkowski_dist
 
