@@ -72,7 +72,7 @@ import seaborn as sns
 sns.clustermap(sp.genes_distance_array)
 ```
 
-<div align=center><img src="../_static/heatmap.png" width = "300"/></div>
+<div align=center><img src="../_static/heatmap.png" width = "400"/></div>
 
 ### build distance matrix & clustering
 
