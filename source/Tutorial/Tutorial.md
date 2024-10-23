@@ -134,6 +134,24 @@ sp.plot.plot_genes(label=0, n_gene=8, s=5, reverse_y=True, reverse_x=True)
 
 **n_gene**: Number of genes to visualize
 
+
+To visualize the specific gene (such as ***BRAFhuman***):
+```python
+hcc2l.plot.plot_gene('BRAFhuman', 
+                     spot_size=10,
+                     global_matrix_spot_size=10,
+                     rotate=True, 
+                     reverse_y=True, 
+                     reverse_x=True, 
+                     vmax=95, 
+                     cmap='Spectral_r',
+                     figsize=(5,5),
+                     save_path='./',
+                     format='png')
+```
+
+**reverse_y, reverse_x, rotate** is optional, they are used to adjust coordinate here.
+
 ---
 
 ## HCC
@@ -158,4 +176,19 @@ sp.read_h5ad(file=file_path)
 ```python
 sp.get_genes_csr_array(min_cells=50)
 sp.spatial_high_variable_genes()
+```
+
+### Custom analysis
+STMiner allows to input the genes or gene sets of interest and calculated the distance between all genes and the given gene/genes.
+
+```python
+imm_genes = ['CCL2','CCL3','CCL4','CCL5','CCL8','CCL18','CCL19','CCL21','CXCL9','CXCL10','CXCL11','CXCL13']
+imm_genes_in_hcc1l = []
+
+for i in imm_genes:
+    if i in list(hcc1l.adata.var.index):
+        imm_a.append(i)
+
+hcc1l.fit_pattern(n_comp=20, gene_list=imm_genes_in_hcc1l)
+hcc1l.build_distance_array()
 ```
