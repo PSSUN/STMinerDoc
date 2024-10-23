@@ -174,21 +174,41 @@ sp.read_h5ad(file=file_path)
 ### Find SVG
 
 ```python
-sp.get_genes_csr_array(min_cells=50)
-sp.spatial_high_variable_genes()
+hcc1l.fit_pattern(n_comp=20, gene_list=imm_a)
+hcc1l.build_distance_array()
 ```
 
 ### Custom analysis
 STMiner allows to input the genes or gene sets of interest and calculated the distance between all genes and the given gene/genes.
 
 ```python
+import numpy as np
+from STMiner.Algorithm.distance import compare_gmm_distance
+from sklearn import mixture
+
+# Input interested gene sets
 imm_genes = ['CCL2','CCL3','CCL4','CCL5','CCL8','CCL18','CCL19','CCL21','CXCL9','CXCL10','CXCL11','CXCL13']
 imm_genes_in_hcc1l = []
 
 for i in imm_genes:
     if i in list(hcc1l.adata.var.index):
-        imm_a.append(i)
+        imm_genes_in_hcc1l.append(i)
 
+# Get interested pattern
 hcc1l.fit_pattern(n_comp=20, gene_list=imm_genes_in_hcc1l)
 hcc1l.build_distance_array()
+hcc1l.cluster_gene(n_clusters=1, mds_components=2)
+hcc1l.get_pattern_array(vote_rate=0.2)
+
+def array_to_list(matrix) -> np.array:
+    coords = np.column_stack(np.where(matrix > 0))
+    counts = matrix[matrix > 0].flatten()
+    result = np.repeat(coords, counts, axis=0)
+    return result
+
+gmm = mixture.GaussianMixture(n_components=20)
+gmm.fit(array_to_list(np.round(hcc1l.patterns_matrix_dict[0]).astype(np.int32)))
+
+# Compare 
+df = compare_gmm_distance(gmm, hcc1l.patterns)
 ```
