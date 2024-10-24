@@ -1,6 +1,7 @@
 # Benchmark for SVG detections
 
 ## Evaluate SVG
+**NOTE:** To install other packages such as SpatialDE/hotspot, please refer to their official site. 
 
 ```python
 import os
@@ -86,7 +87,7 @@ if __name__ == '__main__':
                 
 ```
 
-## Compare SVG and non-SVG 
+## Compare the distance between SVGs and non-SVGs
 
 ```python
 import numpy as np
