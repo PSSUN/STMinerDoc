@@ -1,8 +1,250 @@
 # Benchmark for SVG detections
 
 ## Evaluate SVG
-**NOTE:** To install other packages such as SpatialDE/hotspot, please refer to their official site. 
+**NOTE:** To install other packages such as SpatialDE/hotspot/SpaGFT, please refer to their official site. 
 
+### SpaGFT
+```python
+import pandas as pd
+import numpy as np
+import scanpy as sc
+import SpaGFT as spg
+
+def process_h5ad_file(file):
+    spagft_svg(file)
+
+
+def spagft_svg(file):
+    adata = sc.read_h5ad(file)    
+    sc.pp.filter_genes(adata, min_cells=50)
+    name = os.path.basename(file)
+    pre = name.split('.')[0]
+    adata.obs.loc[:, ['array_row', 'array_col']] = adata.obsm['spatial']
+    (ratio_low, ratio_high) = spg.gft.determine_frequency_ratio(adata, ratio_neighbors=1)    
+    df_res = spg.detect_svg(adata,
+                        spatial_info=['array_row', 'array_col'],
+                        ratio_low_freq=ratio_low,
+                        ratio_high_freq=ratio_high,
+                        ratio_neighbors=1,
+                        filter_peaks=True,
+                        S=6)
+
+    df_res = df_res.loc[adata.var_names]
+    df = df_res.sort_values(by='svg_rank', ascending=True)
+    df.to_csv('./benchmark/spagft_' + pre + '_50.csv')
+
+
+if __name__ == '__main__':
+    current_dir = 'I://mm10'
+    for root, _, files in os.walk(current_dir):
+        for file in files:
+            if file.endswith('h5ad'):
+                h5ad_file_path = os.path.join(root, file)
+                # Process the H5AD file here
+                process_h5ad_file(h5ad_file_path)
+```
+
+### scGCO
+```python
+import pandas as pd
+import numpy as np
+import scanpy as sc
+from scGCO import *
+
+def process_h5ad_file(file):
+    adata = sc.read_h5ad(file)
+    name = os.path.basename(file)
+    pre = name.split('.')[0]
+    sc.pp.filter_genes(adata, min_cells=50)
+    data = pd.DataFrame(
+        adata.X.todense(), columns=adata.var_names, index=adata.obs_names
+    )
+    data_norm = normalize_count_cellranger(data)
+    exp = data.iloc[:, 0]
+    locs = adata.obsm['spatial'].copy()
+    cellGraph = create_graph_with_weight(locs, exp)
+    gmmDict= gmm_model(data_norm)
+
+    df_res = identify_spatial_genes(locs, data_norm, cellGraph,gmmDict)
+    df_res = df_res.loc[adata.var_names]
+    df = pd.concat([df_res, adata.var], axis=1)
+    df.to_csv('/data/home/pssun/scgco_' + pre + '_50.csv')
+
+
+if __name__ == '__main__':
+    current_dir = '/data/home/pssun/mm10/'
+    for root, _, files in os.walk(current_dir):
+        for file in files:
+            if file.endswith('h5ad'):
+                h5ad_file_path = os.path.join(root, file)
+                # Process the H5AD file here
+                process_h5ad_file(h5ad_file_path)
+```
+
+### nnSVG
+```R
+library(nnSVG)
+library(anndata)
+library(SpatialExperiment)
+library(scran)
+
+reticulate::use_condaenv("base", required = TRUE)
+
+
+csv_files <- list.files(path = '/data/home/st/', pattern = "\\.h5ad$", full.names = TRUE)
+out_dir <- "/data/home/result/"
+
+for (file in csv_files) {
+    file_name <- tools::file_path_sans_ext(basename(file))
+    print(file_name)
+    adata <- anndata::read_h5ad(file)
+    counts <- t(as.matrix(adata$X))
+    colnames(counts) <- adata$obs_names
+    rownames(counts) <- adata$var_names
+    loc <- as.data.frame(adata$obsm[['spatial']])
+    row_data = adata$var
+    row_data$gene_id = rownames(row_data)
+    row_data$feature_type = "Gene Expression"
+    colnames(loc) <- c("x", "y")
+    rownames(loc) <- colnames(counts)
+    spe <- SpatialExperiment(
+      assays = list(counts = counts),
+      rowData = row_data,
+      colData = loc,
+      spatialCoordsNames = c("x", "y"))
+    spe <- computeLibraryFactors(spe)
+    spe <- logNormCounts(spe)
+
+    # filter any new zeros created after filtering low-expressed genes
+    # remove genes with zero expression
+    # remove spots with zero expression
+    ix_zero_spots <- colSums(counts(spe)) == 0
+    table(ix_zero_spots)
+    if (sum(ix_zero_spots) > 0) {
+      spe <- spe[, !ix_zero_spots]
+    }
+    dim(spe)
+    ix_zero_genes <- rowSums(counts(spe)) <= 50
+    table(ix_zero_genes)
+
+    if (sum(ix_zero_genes) > 0) {
+      spe <- spe[!ix_zero_genes, ]
+    }
+    dim(spe)
+
+    print('Start')
+    spe <- nnSVG(spe, n_threads=48)
+    df <- rowData(spe)
+    output_file <- file.path(out_dir, paste0("nnsvg_", file_name, ".csv"))
+    write.csv(df, file=output_file, quote=FALSE)
+}
+```
+
+### SPARK
+```R
+library(SPARK)
+library(Matrix)
+
+
+dir_path <- "/data/home/st/"
+csv_files <- list.files(path = dir_path, pattern = "\\.csv$", full.names = TRUE)
+out_dir <- "/data/home/result/"
+
+for (file in csv_files) {
+  count <- read.csv(file, row.names = 1, check.names = FALSE)
+  file_name <- tools::file_path_sans_ext(basename(file))
+  print(file_name)
+  tmp <- as.matrix(count)
+  info <- cbind.data.frame(
+    x = as.numeric(sapply(strsplit(colnames(tmp), split = "x"), "[", 1)),
+    y = as.numeric(sapply(strsplit(colnames(tmp), split = "x"), "[", 2)),
+    total_counts = apply(tmp, 2, sum)
+  )
+  rownames(info) <- colnames(tmp)
+  location <- as.matrix(info)
+  counts_sparse <- as.matrix(tmp)
+  spark <- CreateSPARKObject(counts=count, percentage = 0, min_total_counts = 0, location=info[, 1:2])
+  spark@lib_size <- apply(spark@counts, 2, sum)
+  spark <- spark.vc(spark,
+                    covariates = NULL,
+                    lib_size = spark@lib_size,
+                    num_core = 24,
+                    verbose = F)
+  spark <- spark.test(spark,
+                      check_positive = T,
+                      verbose = F)
+  df <- as.data.frame(spark@res_mtest)
+  output_file <- file.path(out_dir, paste0("spark_", file_name, ".csv"))
+  write.csv(df, file=output_file, quote=FALSE)
+  df[is.na(df)] <- 1
+  print('-----------------------------------------')
+}
+
+```
+
+### trendsceek
+```R
+library(trendsceek)
+library(Matrix)
+
+
+dir_path <- "G://trendsceek/"
+csv_files <- list.files(path = dir_path, pattern = "\\.csv$", full.names = TRUE)
+out_dir <- "E://benchmark"
+
+for (file in csv_files) {
+  count <- read.csv(file, row.names = 1, check.names = FALSE)
+  file_name <- tools::file_path_sans_ext(basename(file))
+  print(file_name)
+  counts_filt <- genefilter_exprmat(count,
+  min.expr = 3,
+    min.ncells.expr = 50)
+  vargenes_stats <- calc_varstats(counts_filt,
+    counts_filt,
+    quant.cutoff = 0.5,
+   method = "glm"
+  )
+  topvar.genes <- rownames(vargenes_stats[["real.stats"]])[1:2000]
+  output_file <- file.path(out_dir, paste0("trendsceek_", file_name, ".csv"))
+  write.csv(topvar.genes, output_file)
+}
+```
+
+### SPARKX
+```R
+library(SPARK)
+library(Matrix)
+
+
+dir_path <- "G://sparkx/"
+csv_files <- list.files(path = dir_path, pattern = "\\.csv$", full.names = TRUE)
+out_dir <- "E://benchmark"
+
+for (file in csv_files) {
+  count <- read.csv(file, row.names = 1, check.names = FALSE)
+  file_name <- tools::file_path_sans_ext(basename(file))
+  print(file_name)
+
+  tmp <- as.matrix(count)
+  info <- cbind.data.frame(
+    x = as.numeric(sapply(strsplit(colnames(tmp), split = "x"), "[", 1)),
+    y = as.numeric(sapply(strsplit(colnames(tmp), split = "x"), "[", 2)),
+    total_counts = apply(tmp, 2, sum)
+  )
+  rownames(info) <- colnames(tmp)
+  location <- as.matrix(info)
+  counts_sparse <- as.matrix(tmp)
+  sparkX <- sparkx(counts_sparse, location, numCores = 1, option = "mixture")
+  df <- as.data.frame(sparkX$res_mtest)
+  df <- df[order(df$adjustedPval), ]
+  output_file <- file.path(out_dir, paste0("sparkx_", file_name, ".csv"))
+  write.csv(df, output_file)
+}
+```
+
+
+
+### SpatialDE/SpatialDE2/Hotspot/STMiner
 ```python
 import os
 import NaiveDE
@@ -27,7 +269,7 @@ def stminer_svg(file):
     sp.get_genes_csr_array(min_cells=50, log1p=True)
     sp.spatial_high_variable_genes()
     df = sp.global_distance
-    df.to_csv('E://benchmark/benchmark/stminer_' + pre + '_50.csv')
+    df.to_csv('E://benchmark/stminer_' + pre + '_50.csv')
 
 def hotspot_svg(file):
     adata = sc.read_h5ad(file)
@@ -51,7 +293,7 @@ def hotspot_svg(file):
 
     hs.create_knn_graph(weighted_graph=False, n_neighbors=50)
     hs_results = hs.compute_autocorrelations()
-    hs_results.to_csv('E://benchmark/benchmark/hotspots_' + pre + '_50.csv')
+    hs_results.to_csv('E://benchmark/hotspots_' + pre + '_50.csv')
 
 def spatial_de_svg(file):
     name = os.path.basename(file)
@@ -67,13 +309,32 @@ def spatial_de_svg(file):
     resid_expr = NaiveDE.regress_out(adata.obs, norm_expr.T, 'np.log(total_counts)').T
     sample_resid_expr = resid_expr.sample(n=len(adata.var), axis=1, random_state=1)
     X = adata.obs[['x', 'y']]
-
-    print(pre)
     results = SpatialDE.run(np.array(X), sample_resid_expr)
     sign_results = results.query('qval < 0.05')
     sign_results = sign_results.sort_values(by=['FSV'], ascending=False)
 
     sign_results.to_csv('E://benchmark/spatialde_' + pre + '_50.csv')
+
+def spatial2_de_svg(file):
+    name = os.path.basename(file)
+    pre = name.split('.')[0]
+    adata = sc.read_h5ad(file)
+    sc.pp.filter_genes(adata, min_cells=500)
+    sc.pp.calculate_qc_metrics(adata, inplace=True)
+    adata.obs['x'] = adata.obsm['spatial'][:, 0]
+    adata.obs['y'] = adata.obsm['spatial'][:, 1]
+    total_counts = sc.get.obs_df(adata, keys=["total_counts"])
+    exp_df = pd.DataFrame(adata.X.todense(), index=adata.obs.index, columns=adata.var.index)
+    norm_expr = NaiveDE.stabilize(exp_df.T).T
+    adata.X = NaiveDE.regress_out(total_counts, norm_expr.T, 'np.log(total_counts)').T
+    X = adata.obs[['x', 'y']]
+    df_res = SpatialDE.fit(adata, normalized=True, control=None)
+    df_res.set_index("gene", inplace=True)
+    df_res = df_res.loc[adata.var_names]
+
+    df = pd.concat([df_res, adata.var], axis=1)
+    df.to_csv('E://benchmark/spatialde2_' + pre + '_50.csv')
+
 
 if __name__ == '__main__':
     # current_dir is the h5ad file directory.
