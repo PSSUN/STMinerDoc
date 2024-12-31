@@ -5,7 +5,7 @@ STMiner has been uploaded to PyPI [here](https://pypi.org/project/STMiner), You 
 
 Create conda environment:
 ```bash
-conda create -n stminer
+conda create -n stminer python=3.10
 ```
 
 Install STMiner:
