@@ -12,6 +12,10 @@ Install STMiner:
 ```bash
 pip3 install STMiner
 ```
+If the download speed is slow, please try to specify the source, for example:
+```bash
+pip3 install STMiner -i https://pypi.tuna.tsinghua.edu.cn/simple
+```
 
 ## Or you can just clone STMiner from Github and install by yourself
 
