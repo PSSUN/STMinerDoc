@@ -22,7 +22,7 @@ pip3 install STMiner
 pip3 install STMiner -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
-## Or you can just clone STMiner from Github and install by yourself (NOT recommended)
+## STMiner can be cloned from GitHub and installed locally (NOT recommended)
 Download STMiner [here](https://github.com/xjtu-omics/STMiner.git) and unzip, then run:
 
 ```bash
