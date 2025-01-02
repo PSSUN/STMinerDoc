@@ -1,6 +1,6 @@
 # Installation
 
-## pip (recommended)
+## pip (⭐recommended)
 STMiner has been uploaded to [PyPI](https://pypi.org/project/STMiner), You can install STMiner via pip:
 
 Create conda environment:
