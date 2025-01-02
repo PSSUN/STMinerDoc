@@ -1,24 +1,28 @@
 # Installation
 
-## pip
-STMiner has been uploaded to PyPI [here](https://pypi.org/project/STMiner), You can install STMiner via pip:
+## pip (recommended)
+STMiner has been uploaded to [PyPI](https://pypi.org/project/STMiner), You can install STMiner via pip:
 
 Create conda environment:
 ```bash
 conda create -n stminer python=3.10
 ```
 
-Install STMiner:
+Activate the environment:
+```bash
+conda activate stminer
+```
+
+Install STMiner via pip:
 ```bash
 pip3 install STMiner
 ```
-If the download speed is slow, please try to specify the source, for example:
+**NOTE:** If the download speed is slow, please try to specify the source, for example:
 ```bash
 pip3 install STMiner -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
-## Or you can just clone STMiner from Github and install by yourself
-
+## Or you can just clone STMiner from Github and install by yourself (NOT recommended)
 Download STMiner [here](https://github.com/xjtu-omics/STMiner.git) and unzip, then run:
 
 ```bash
