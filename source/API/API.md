@@ -1,6 +1,6 @@
 # API
 
-## Main Attributes of STMiner
+## Main Attributes of STMiner.SPFinder
 
 | Attributes           | Type          | Description                            |
 | -------------------- | ------------- | -------------------------------------- |
@@ -15,7 +15,7 @@
 
 ---
 
-## Main Methods of STMiner 
+## Main Methods of STMiner.SPFinder
 
 ### Load data
 
