@@ -154,7 +154,7 @@ hcc2l.plot.plot_gene('BRAFhuman',
 
 ---
 
-## human Hepatocellular carcinoma (HCC)
+## human hepatocellular carcinoma
 
 The HCC ST data can be download [here](http://lifeome.net/supp/livercancer-st/data.htm)
 
