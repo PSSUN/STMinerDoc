@@ -1,3 +1,3 @@
 [![Documentation Status](https://readthedocs.org/projects/stminerdoc/badge/?version=latest)](https://stminerdoc.readthedocs.io/en/latest/?badge=latest)  
 
-Documents of STMiner
+📖 Offical Documents of [STMiner](https://github.com/xjtu-omics/STMiner).
