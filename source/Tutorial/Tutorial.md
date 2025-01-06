@@ -1,6 +1,6 @@
 # Tutorial
 
-## Zebrafish
+## Zebrafish melanoma
 
 ### import package
 
@@ -154,7 +154,7 @@ hcc2l.plot.plot_gene('BRAFhuman',
 
 ---
 
-## Hepatocellular carcinoma (HCC)
+## human Hepatocellular carcinoma (HCC)
 
 The HCC ST data can be download [here](http://lifeome.net/supp/livercancer-st/data.htm)
 
