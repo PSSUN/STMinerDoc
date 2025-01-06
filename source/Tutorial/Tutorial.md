@@ -189,14 +189,13 @@ from sklearn import mixture
 # Input interested gene sets
 imm_genes = ['CCL2','CCL3','CCL4','CCL5','CCL8','CCL18','CCL19','CCL21','CXCL9','CXCL10','CXCL11','CXCL13']
 imm_genes_in_hcc1l = []
+for i in imm_genes:
+    if i in list(hcc1l.adata.var.index):
+        imm_genes_in_hcc1l.append(i)
 ```
 
 ### Custom analysis (get patterns of interested gene set)
 ```python
-for i in imm_genes:
-    if i in list(hcc1l.adata.var.index):
-        imm_genes_in_hcc1l.append(i)
-
 # Get interested pattern
 hcc1l.fit_pattern(n_comp=20, gene_list=imm_genes_in_hcc1l)
 hcc1l.build_distance_array()
