@@ -34,18 +34,8 @@ imm_genes =  ['CCL2','CCL3','CCL4','CCL5','CCL8','CCL18','CCL19','CCL21','CXCL9'
 hcc1l.get_pattern_of_given_genes(gene_list=imm_genes)
 ```
 
-## Get patterns of all genes
-```python
-def array_to_list(matrix) -> np.array:
-    coords = np.column_stack(np.where(matrix > 0))
-    counts = matrix[matrix > 0].flatten()
-    result = np.repeat(coords, counts, axis=0)
-    return result
-gmm = mixture.GaussianMixture(n_components=20)
-gmm.fit(array_to_list(np.round(hcc1l.patterns_matrix_dict[0]).astype(np.int32)))
-```
-
 ## Cmpare all genes with interested gene set
 ```python
-df = compare_gmm_distance(gmm, hcc1l.patterns)
+hcc1l.fit_pattern(n_comp=20) # Fit patterns of all genes
+df = compare_gmm_distance(hcc1l.custom_pattern, hcc1l.patterns) # Compare the distance between all genes and the given gene set
 ```
