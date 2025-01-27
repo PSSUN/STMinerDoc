@@ -63,4 +63,6 @@ gmm.fit(array_to_list(np.round(hcc1l.patterns_matrix_dict[0]).astype(np.int32)))
 df = compare_gmm_distance(gmm, hcc1l.patterns)
 ```
 
-{bdg-link-primary}`https://example.com`
+```{button-link} https://example.com
+Button text
+```
