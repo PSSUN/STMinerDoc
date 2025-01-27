@@ -13,8 +13,7 @@ Welcome to STMiner's documentation!
 
    Introduction/Introduction
    Install/Install
-   Tutorial/Zebrafish_melanoma
-   Tutorial/human_HCC
+   Tutorial/Tutorial
    API/API
    Benchmark/Benchmark
 
