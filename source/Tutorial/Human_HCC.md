@@ -47,7 +47,7 @@ hcc1l.cluster_gene(n_clusters=1, mds_components=2)
 hcc1l.get_pattern_array(vote_rate=0.2)
 ```
 
-### Custom analysis (get patterns of all genes)
+### Get patterns of all genes
 ```python
 def array_to_list(matrix) -> np.array:
     coords = np.column_stack(np.where(matrix > 0))
@@ -58,7 +58,7 @@ gmm = mixture.GaussianMixture(n_components=20)
 gmm.fit(array_to_list(np.round(hcc1l.patterns_matrix_dict[0]).astype(np.int32)))
 ```
 
-### Custom analysis (compare all genes with interested gene set)
+### Cmpare all genes with interested gene set
 ```python
 df = compare_gmm_distance(gmm, hcc1l.patterns)
 ```
