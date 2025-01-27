@@ -22,7 +22,7 @@ hcc1l.fit_pattern(n_comp=20, gene_list=imm_a)
 hcc1l.build_distance_array()
 ```
 
-### Custom analysis (load interested gene set)
+### Load interested gene set
 STMiner allows to input the genes or gene sets of interest and calculated the distance between all genes and the given gene/genes.
 
 ```python
