@@ -36,6 +36,8 @@ hcc1l.get_pattern_of_given_genes(gene_list=imm_genes)
 
 ## Cmpare all genes with interested gene set
 ```python
+from STMiner.Algorithm.distance import compare_gmm_distance
+
 hcc1l.fit_pattern(n_comp=20) # Fit patterns of all genes
 df = compare_gmm_distance(hcc1l.custom_pattern, hcc1l.patterns) # Compare the distance between all genes and the given gene set
 ```
