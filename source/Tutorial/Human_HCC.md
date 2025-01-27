@@ -1,6 +1,7 @@
 ## Human hepatocellular carcinoma
 
-The HCC ST data can be download [here](http://lifeome.net/supp/livercancer-st/data.htm)
+The HCC ST data can be download {bdg-link-primary}`here <http://lifeome.net/supp/livercancer-st/data.htm>`.
+
 
 ### import package
 
@@ -61,8 +62,4 @@ gmm.fit(array_to_list(np.round(hcc1l.patterns_matrix_dict[0]).astype(np.int32)))
 ### Cmpare all genes with interested gene set
 ```python
 df = compare_gmm_distance(gmm, hcc1l.patterns)
-```
-
-```{button-link} https://example.com
-Button text
 ```
