@@ -1,54 +1,40 @@
-## Human hepatocellular carcinoma
+# Human hepatocellular carcinoma
 
 The HCC ST data can be download {bdg-link-primary}`here <http://lifeome.net/supp/livercancer-st/data.htm>`.
 
 
-### import package
-
-```python
-from STMiner.SPFinder import SPFinder
-```
-### Load data
-
-```python
-file_path = 'I://HCC-1L.h5ad'
-sp = SPFinder()
-sp.read_h5ad(file=file_path)
-```
-
-### Find SVG
-
-```python
-hcc1l.fit_pattern(n_comp=20, gene_list=imm_a)
-hcc1l.build_distance_array()
-```
-
-### Load interested gene set
-STMiner allows to input the genes or gene sets of interest and calculated the distance between all genes and the given gene/genes.
+## Import package
 
 ```python
 import numpy as np
+import pandas as pd
+import scanpy as sc
 from STMiner.Algorithm.distance import compare_gmm_distance
 from sklearn import mixture
-
-# Input interested gene sets
-imm_genes = ['CCL2','CCL3','CCL4','CCL5','CCL8','CCL18','CCL19','CCL21','CXCL9','CXCL10','CXCL11','CXCL13']
-imm_genes_in_hcc1l = []
-for i in imm_genes:
-    if i in list(hcc1l.adata.var.index):
-        imm_genes_in_hcc1l.append(i)
+from STMiner.SPFinder import SPFinder
 ```
 
-### Custom analysis (get patterns of interested gene set)
+## Load data
+
 ```python
-# Get interested pattern
-hcc1l.fit_pattern(n_comp=20, gene_list=imm_genes_in_hcc1l)
-hcc1l.build_distance_array()
-hcc1l.cluster_gene(n_clusters=1, mds_components=2)
-hcc1l.get_pattern_array(vote_rate=0.2)
+data = sc.read_10x_h5("I://HCC-1L/filtered_feature_bc_matrix.h5")  # Replace with your h5 file path
+position=pd.read_csv("I://HCC-1L/spatial/tissue_positions_list.csv", header=None, index_col=0) # Replace with your tissue_positions_list.csv file path
+position.columns = ['in_tissue','x','y','px','py']
+data.obs = pd.merge(data.obs, position, left_index=True, right_index=True)
+sc.pp.filter_genes(data, min_cells=50)
+hcc1l = SPFinder(data) # Load anndata to STMiner
 ```
 
-### Get patterns of all genes
+## Get patterns of interested gene set
+
+STMiner allows to input the genes or gene sets of interest and calculated the distance between all genes and the given gene/genes.
+
+```python
+imm_genes =  ['CCL2','CCL3','CCL4','CCL5','CCL8','CCL18','CCL19','CCL21','CXCL9','CXCL10','CXCL11','CXCL13']
+hcc1l.get_pattern_of_given_genes(gene_list=imm_genes)
+```
+
+## Get patterns of all genes
 ```python
 def array_to_list(matrix) -> np.array:
     coords = np.column_stack(np.where(matrix > 0))
@@ -59,7 +45,7 @@ gmm = mixture.GaussianMixture(n_components=20)
 gmm.fit(array_to_list(np.round(hcc1l.patterns_matrix_dict[0]).astype(np.int32)))
 ```
 
-### Cmpare all genes with interested gene set
+## Cmpare all genes with interested gene set
 ```python
 df = compare_gmm_distance(gmm, hcc1l.patterns)
 ```

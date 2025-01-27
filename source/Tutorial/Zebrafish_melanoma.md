@@ -1,14 +1,14 @@
-## Zebrafish melanoma
+# Zebrafish melanoma
 
 The Zebrafish melanoma ST data can be download {bdg-link-primary}`here <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM4838133>`.
 
-### import package
+## Import package
 
 ```python
 from STMiner.SPFinder import SPFinder
 ```
 
-### Load data
+## Load data
 
 ```python
 file_path = 'I://10X_Visium_hunter2021spatially_sample_C_data.h5ad'
@@ -25,7 +25,7 @@ sp.adata
 
 Besides, **sp** Obj has many useful attributes which can be used for visualization or integrated into other pipelines (such as scanpy). See [API](https://stminerdoc.readthedocs.io/en/latest/API/API.html) for more details.
 
-### Find SVG
+## Find SVG
 
 ```python
 sp.get_genes_csr_array(min_cells=50, log1p=False)
@@ -43,7 +43,7 @@ Computing ot distances...:  10%|▉         | 1069/10762 [03:04<31:11,  6.12it/s
 ```
 
 
-### Fit GMM
+## Fit GMM
 
 ```python
 sp.fit_pattern(n_comp=20, gene_list=list(sp.global_distance[:2000]['Gene']))
@@ -59,7 +59,7 @@ Fitting GMM...:  10%|▉         | 190/2000 [00:42<04:36,  6.54it/s]
  - **gene_list**: Gene list to fit GMM model
 </br>
 
-### Build distance array
+## Build distance array
 
 ```python
 sp.build_distance_array()
@@ -74,7 +74,7 @@ sns.clustermap(sp.genes_distance_array)
 
 <div align=center><img src="../_static/heatmap.png" width = "400"/></div>
 
-### build distance matrix & clustering
+## build distance matrix & clustering
 
 ```python
 sp.cluster(n_clusters=6)
@@ -82,7 +82,7 @@ sp.cluster(n_clusters=6)
 
 **n_clusters**: Number of cluster
 
-### Result & Visualization
+## Result & Visualization
 
 The result are stored in **genes_labels**:
 
