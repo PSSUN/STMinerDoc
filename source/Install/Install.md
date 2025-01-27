@@ -25,6 +25,7 @@ STMiner has been uploaded to [PyPI](https://pypi.org/project/STMiner), You can i
   pip3 install STMiner -i https://pypi.tuna.tsinghua.edu.cn/simple
   ```
 
+
 ## STMiner can be cloned from GitHub and installed locally (NOT recommended)
 Download STMiner [here](https://github.com/xjtu-omics/STMiner.git) and unzip, then run:
 

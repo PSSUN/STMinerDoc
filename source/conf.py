@@ -23,11 +23,11 @@ source_parsers = {
 source_suffix = ['.rst', '.md']
 
 project = 'STMiner'
-copyright = '2024, pssun'
+copyright = '2025, pssun'
 author = 'Peisen Sun'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.3'
+release = '0.0.4'
 
 
 # -- General configuration ---------------------------------------------------
@@ -35,7 +35,7 @@ release = '0.0.3'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['recommonmark', 'sphinx_markdown_tables']
+extensions = ['recommonmark', 'sphinx_markdown_tables', 'sphinx_design']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
