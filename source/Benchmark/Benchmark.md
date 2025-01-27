@@ -3,7 +3,7 @@
 ## Evaluate SVG
 **NOTE:** To install other packages such as SpatialDE/hotspot/SpaGFT, please refer to their official site. 
 
-### SpaGFT
+:::{dropdown} SpaGFT
 ```python
 import pandas as pd
 import numpy as np
@@ -43,8 +43,9 @@ if __name__ == '__main__':
                 # Process the H5AD file here
                 process_h5ad_file(h5ad_file_path)
 ```
+:::
 
-### scGCO
+:::{dropdown} SpaGFT
 ```python
 import pandas as pd
 import numpy as np
@@ -80,8 +81,11 @@ if __name__ == '__main__':
                 # Process the H5AD file here
                 process_h5ad_file(h5ad_file_path)
 ```
+:::
 
-### nnSVG
+
+:::{dropdown} nnSVG
+
 ```R
 library(nnSVG)
 library(anndata)
@@ -139,8 +143,9 @@ for (file in csv_files) {
     write.csv(df, file=output_file, quote=FALSE)
 }
 ```
+:::
 
-### SPARK
+:::{dropdown} SPARK
 ```R
 library(SPARK)
 library(Matrix)
@@ -181,8 +186,10 @@ for (file in csv_files) {
 }
 
 ```
+:::
 
-### trendsceek
+:::{dropdown} trendsceek
+
 ```R
 library(trendsceek)
 library(Matrix)
@@ -209,8 +216,9 @@ for (file in csv_files) {
   write.csv(topvar.genes, output_file)
 }
 ```
+:::
 
-### SPARKX
+:::{dropdown} SPARKX
 ```R
 library(SPARK)
 library(Matrix)
@@ -240,11 +248,9 @@ for (file in csv_files) {
   output_file <- file.path(out_dir, paste0("sparkx_", file_name, ".csv"))
   write.csv(df, output_file)
 }
-```
+:::
 
-
-
-### SpatialDE/SpatialDE2/Hotspot/STMiner
+:::{dropdown} SpatialDE/SpatialDE2/Hotspot/STMiner
 ```python
 import os
 import NaiveDE
@@ -347,6 +353,8 @@ if __name__ == '__main__':
                 process_h5ad_file(h5ad_file_path)
                 
 ```
+:::
+
 
 ## Compare the distance between SVGs and non-SVGs
 
