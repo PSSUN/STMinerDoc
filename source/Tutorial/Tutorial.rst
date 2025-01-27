@@ -1,7 +1,8 @@
-.. toctree::
-   :maxdepth: 3
+Tutorial
+========
 
-Zebrafish_melanoma
-   Tutorial/Zebrafish_melanoma
-Human_HCC
-   Tutorial/Human_HCC
+.. toctree::
+   :maxdepth: 1
+
+   Human_HCC
+   Zebrafish_melanoma

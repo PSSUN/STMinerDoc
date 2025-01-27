@@ -1,4 +1,4 @@
-## human hepatocellular carcinoma
+## Human hepatocellular carcinoma
 
 The HCC ST data can be download [here](http://lifeome.net/supp/livercancer-st/data.htm)
 
