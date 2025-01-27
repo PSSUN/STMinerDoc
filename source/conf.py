@@ -16,11 +16,6 @@
 
 
 # -- Project information -----------------------------------------------------
-from recommonmark.parser import CommonMarkParser
-source_parsers = {
-    '.md': CommonMarkParser,
-}
-source_suffix = ['.rst', '.md']
 
 project = 'STMiner'
 copyright = '2025, pssun'
@@ -37,6 +32,7 @@ release = '0.0.4'
 # ones.
 extensions = ['myst_parser', 'sphinx_markdown_tables', 'sphinx_design']
 myst_enable_extensions = ["colon_fence"]
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
