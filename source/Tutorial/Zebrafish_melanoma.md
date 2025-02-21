@@ -14,6 +14,8 @@ from STMiner.SPFinder import SPFinder
 file_path = 'I://10X_Visium_hunter2021spatially_sample_C_data.h5ad'
 sp = SPFinder()
 sp.read_h5ad(file=file_path, bin_size=1)
+sp.adata.obs['x']=sp.adata.obs['array_row']
+sp.adata.obs['y']=sp.adata.obs['array_col']
 ```
 
  - The parameter **bin_size** specifies the size of merged cells (spots). If not specified, no merging is performed. If set to 50, 50x50 cells/spots will be merged into a single cell/spot. Due to low sequencing depth in some datasets, cells/spots are often merged during analysis (e.g., stereo-seq). However, 10x data typically does not require merging.
