@@ -41,6 +41,25 @@ You can see output while computing as follows:
 Parsing distance array...: 100%|██████████| 10762/10762 [01:12<00:00, 149.11it/s]
 Computing ot distances...:  10%|▉         | 1069/10762 [03:04<31:11,  6.12it/s]  
 ```
+You can check the spatial varitation of each gene by:
+
+```python
+sp.global_distance
+```
+
+| Gene       | Distance  | z-score   |
+|------------|-----------|-----------|
+| myha       | 1.35E+08  | 2.771493  |
+| vmhcl      | 1.01E+08  | 2.470881  |
+| zgc:101560 | 9.95E+07  | 2.458787  |
+| pvalb1     | 9.82E+07  | 2.445257  |
+| myhz2      | 9.75E+07  | 2.437787  |
+| ...        | ...       | ...       |
+| rps17      | 2.61E+05  | -3.63207  |
+| rpl13      | 2.48E+05  | -3.68506  |
+| rpl32      | 2.43E+05  | -3.70327  |
+| rsl24d1    | 2.27E+05  | -3.7757   |
+| rpl22      | 1.83E+05  | -3.99332  |
 
 
 ## Fit GMM
