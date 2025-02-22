@@ -1,6 +1,6 @@
 # Zebrafish melanoma
 
-The Zebrafish melanoma ST data can be download {bdg-link-primary}`here <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM4838133>`.
+You can download them from [STMiner-test-data](https://github.com/PSSUN/STMiner-test-data). You can also download the raw dataset from [GEO](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM4838133).
 
 ## Import package
 
