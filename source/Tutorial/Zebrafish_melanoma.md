@@ -30,7 +30,7 @@ Besides, **sp** Obj has many useful attributes which can be used for visualizati
 
 ```python
 sp.get_genes_csr_array(min_cells=200, log1p=False)
-sp.spatial_high_variable_genes()
+sp.spatial_high_variable_genes(thread=6)
 ```
  - The parameter **min_cells** was used to filter genes that are too sparse to generate a reliable spatial distribution.
  - The parameter **log1p** was used to avoid extreme values affecting the results. For most open-source h5ad files, log1p has already been executed, so the default value here is False.
