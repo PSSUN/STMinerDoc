@@ -45,7 +45,7 @@ if __name__ == '__main__':
 ```
 :::
 
-:::{dropdown} SpaGFT
+:::{dropdown} scGCO
 ```python
 import pandas as pd
 import numpy as np
