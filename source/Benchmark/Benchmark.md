@@ -355,6 +355,24 @@ if __name__ == '__main__':
 ```
 :::
 
+:::{dropdown} RCTD
+<div><img src="../_static/rctd.png" height="800" title="rctd"><p align="center"></div>
+We used Seurat v5 (https://satijalab.org/seurat/) for single-cell data quality control and analysis. First, we performed quality control on the single-cell data by using the CreateSeuratObject function with parameters min.cells=50 and min.features=200. After this, we normalized the data using NormalizeData(), applying the "LogNormalize" method with scale.factor=10000. Following normalization, we identified highly variable features with FindVariableFeatures() using the default "vst" method and nfeatures=2000.
+The red dots in panel A stand for the highly variable features that have been screened by FindVariableFeatures, with the remaining dots being colored black. The top 10 genes from the results of FindVariableFeatures are annotated with their gene names.
+After that, we used the ScaleData function to scale the data and applied RunPCA to reduce the dimensionality of the data. The features selected for dimensionality reduction are the 2000 highly variable features identified above. The top four PCs (Principal Components) of PCA (Principal Component Analysis) result are presented in panel B.
+To evaluate the number of specific PCs used for cell type clustering, we used ElbowPlot to help determine the optimal number of PCs (panel C), selecting the top 10 PCs as the basis for clustering. Clustering was performed using the function FindClusters with the ‘resolution’ parameter set to 0.3. We chose a resolution of 0.3 because this was the maximum resolution that produced input usable in the subsequent RCTD analysis. When higher resolutions were used, a greater number of clusters were identified many of which had fewer than 25 cells, the minimum number per cluster that RCTD can support). At a resolution of 0.3, this set of data can be divided into 6 clusters (panel D), distinguished primarily by the genes shown in panel E. Yellow represents high contribution, while purple represents low contribution.
+We next used RCTD to load the zebrafish spatial transcriptome data as a query, and ran RCTD with the annotated single-cell transcriptome data as a reference:
+
+```R
+create.RCTD(query, reference, max_cores = 4)
+RCTD <- run.RCTD(RCTD, doublet_mode = 'doublet')
+```
+The RCTD results of the number of confident pixels of each cell type are as follows (RCTD result a):
+<div><img src="../_static/rctd2.png" height="400" title="rctd"><p align="center"></div>
+The above results show that the overwhelming majority of the pixels are classified as cell type #4, and that the remaining cell types account for a small proportion. We further visualize the regions where different cell types are spatially distributed in the results, and the results are in (Supplement Note 3 RCTD result b), each subplot represents the spatial distribution of different cell types:
+Due to the threshold setting of the RCTD's own algorithm, the cell type #3 was not assigned to any position (RCTD result figure, panel a), so while there were 6 cell types in the single-cell annotated results, the results of the RCTD had only a spatial distribution of 5 cell types.
+Since the original output of RCTD (Supplement Note 3 RCTD result a, b) did not allow the user to adjust the size of the axes and spots, for better visualization and comparison with STMiner, we imported the results of RCTD into Python and re-visualized them with seaborn (https://seaborn.pydata.org/). We displayed all the spots (RCTD filtered out the spots with low 'weight 'as defined in RCTD algorithm), and used different colors to represent 'weight'.
+:::
 
 ## Compare the distance between SVGs and non-SVGs
 :::{dropdown} Python code
@@ -1168,21 +1186,3 @@ for tag in [
 
 ```
 :::
-
-## RCTD annotation process
-<div><img src="../_static/rctd.png" height="800" title="rctd"><p align="center"></div>
-We used Seurat v5 (https://satijalab.org/seurat/) for single-cell data quality control and analysis. First, we performed quality control on the single-cell data by using the CreateSeuratObject function with parameters min.cells=50 and min.features=200. After this, we normalized the data using NormalizeData(), applying the "LogNormalize" method with scale.factor=10000. Following normalization, we identified highly variable features with FindVariableFeatures() using the default "vst" method and nfeatures=2000.
-The red dots in panel A stand for the highly variable features that have been screened by FindVariableFeatures, with the remaining dots being colored black. The top 10 genes from the results of FindVariableFeatures are annotated with their gene names.
-After that, we used the ScaleData function to scale the data and applied RunPCA to reduce the dimensionality of the data. The features selected for dimensionality reduction are the 2000 highly variable features identified above. The top four PCs (Principal Components) of PCA (Principal Component Analysis) result are presented in panel B.
-To evaluate the number of specific PCs used for cell type clustering, we used ElbowPlot to help determine the optimal number of PCs (panel C), selecting the top 10 PCs as the basis for clustering. Clustering was performed using the function FindClusters with the ‘resolution’ parameter set to 0.3. We chose a resolution of 0.3 because this was the maximum resolution that produced input usable in the subsequent RCTD analysis. When higher resolutions were used, a greater number of clusters were identified many of which had fewer than 25 cells, the minimum number per cluster that RCTD can support). At a resolution of 0.3, this set of data can be divided into 6 clusters (panel D), distinguished primarily by the genes shown in panel E. Yellow represents high contribution, while purple represents low contribution.
-We next used RCTD to load the zebrafish spatial transcriptome data as a query, and ran RCTD with the annotated single-cell transcriptome data as a reference:
-
-```R
-create.RCTD(query, reference, max_cores = 4)
-RCTD <- run.RCTD(RCTD, doublet_mode = 'doublet')
-```
-The RCTD results of the number of confident pixels of each cell type are as follows (RCTD result a):
-<div><img src="../_static/rctd2.png" height="400" title="rctd"><p align="center"></div>
-The above results show that the overwhelming majority of the pixels are classified as cell type #4, and that the remaining cell types account for a small proportion. We further visualize the regions where different cell types are spatially distributed in the results, and the results are in (Supplement Note 3 RCTD result b), each subplot represents the spatial distribution of different cell types:
-Due to the threshold setting of the RCTD's own algorithm, the cell type #3 was not assigned to any position (RCTD result figure, panel a), so while there were 6 cell types in the single-cell annotated results, the results of the RCTD had only a spatial distribution of 5 cell types.
-Since the original output of RCTD (Supplement Note 3 RCTD result a, b) did not allow the user to adjust the size of the axes and spots, for better visualization and comparison with STMiner, we imported the results of RCTD into Python and re-visualized them with seaborn (https://seaborn.pydata.org/). We displayed all the spots (RCTD filtered out the spots with low 'weight 'as defined in RCTD algorithm), and used different colors to represent 'weight'.
