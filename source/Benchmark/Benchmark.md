@@ -357,7 +357,7 @@ if __name__ == '__main__':
 
 
 ## Compare the distance between SVGs and non-SVGs
-
+:::{dropdown} SpaGFT
 ```python
 import os
 import numpy as np
@@ -1167,6 +1167,8 @@ for tag in [
     plt.show()
 
 ```
+:::
+
 ## RCTD annotation process
 <div><img src="../_static/rctd.png" height="800" title="rctd"><p align="center"></div>
 We used Seurat v5 (https://satijalab.org/seurat/) for single-cell data quality control and analysis. First, we performed quality control on the single-cell data by using the CreateSeuratObject function with parameters min.cells=50 and min.features=200. After this, we normalized the data using NormalizeData(), applying the "LogNormalize" method with scale.factor=10000. Following normalization, we identified highly variable features with FindVariableFeatures() using the default "vst" method and nfeatures=2000.
