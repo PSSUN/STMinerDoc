@@ -357,7 +357,7 @@ if __name__ == '__main__':
 
 
 ## Compare the distance between SVGs and non-SVGs
-:::{dropdown} SpaGFT
+:::{dropdown} Python code
 ```python
 import os
 import numpy as np
