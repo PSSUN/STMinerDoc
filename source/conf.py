@@ -37,6 +37,7 @@ MOCK_MODULES = [
     "setuptools",
     "tifffile",
     "tqdm",
+    "scipy",
     "umap_learn",
     "scikit-misc",
 ]
