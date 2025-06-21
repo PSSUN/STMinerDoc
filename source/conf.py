@@ -15,10 +15,17 @@
 # sys.path.insert(0, os.path.abspath('.'))
 
 
+import os
+import sys
+
+current_dir = os.path.abspath('.')
+sys.path.insert(0, current_dir)
+
+
 # -- Project information -----------------------------------------------------
 
 project = 'STMiner'
-copyright = '2025, pssun'
+copyright = '2025, Peisen Sun'
 author = 'Peisen Sun'
 
 # The full version, including alpha/beta/rc tags
@@ -30,8 +37,10 @@ release = '1.1.0'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['myst_parser', 'sphinx_markdown_tables', 'sphinx_design']
+extensions = ['myst_parser', 'sphinx_markdown_tables', 'sphinx_design','sphinx.ext.viewcode', 'sphinx.ext.autosummary','sphinx.ext.autodoc','sphinx.ext.napoleon']
 myst_enable_extensions = ["colon_fence"]
+
+autosummary_generate = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
