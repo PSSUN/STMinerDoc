@@ -10,7 +10,7 @@ API Reference
 
 STMiner.SPFinder
 --------------
-.. currentmodule:: STMiner
+.. currentmodule:: STMiner.SPFinder
 
 .. autoclass:: STMiner.SPFinder
    :members:

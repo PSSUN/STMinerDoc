@@ -7,10 +7,10 @@ import pandas as pd
 import seaborn as sns
 import umap
 from matplotlib.colors import ListedColormap
-# from scipy.sparse import csr_matrix
-# from sklearn.manifold import TSNE
-# from sklearn.metrics import davies_bouldin_score, calinski_harabasz_score
-# from sklearn.metrics import silhouette_score
+from scipy.sparse import csr_matrix
+from sklearn.manifold import TSNE
+from sklearn.metrics import davies_bouldin_score, calinski_harabasz_score
+from sklearn.metrics import silhouette_score
 
 from STMiner.Algorithm.AlgUtils import get_exp_array
 
