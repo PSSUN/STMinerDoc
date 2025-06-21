@@ -31,6 +31,7 @@ MOCK_MODULES = [
     "plotly",
     "POT",
     "scanpy",
+    "sklearn",
     "scikit_learn",
     "scipy.stats",
     "seaborn",
