@@ -34,8 +34,6 @@ MOCK_MODULES = [
     "sklearn.cluster",
     "scikit_learn",
     "scipy",
-    "scipy.optimize",
-    "scipy.stats",
     "seaborn",
     "setuptools",
     "tifffile",
@@ -75,6 +73,8 @@ extensions = [
     "sphinx.ext.autosummary",
     "sphinx.ext.autodoc",
     "sphinx.ext.napoleon",
+    "scikit_learn",
+    "scipy"
 ]
 myst_enable_extensions = ["colon_fence"]
 
