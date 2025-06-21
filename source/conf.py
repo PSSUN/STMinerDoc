@@ -18,7 +18,7 @@
 import os
 import sys
 
-current_dir = os.path.abspath('.')
+current_dir = os.path.abspath('../')
 sys.path.insert(0, current_dir)
 
 
