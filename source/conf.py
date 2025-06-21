@@ -42,8 +42,8 @@ MOCK_MODULES = [
     "scikit-misc",
 ]
 
-for mod_name in MOCK_MODULES:
-    sys.modules[mod_name] = Mock()
+# for mod_name in MOCK_MODULES:
+#     sys.modules[mod_name] = Mock()
 
 
 current_dir = os.path.abspath("../")

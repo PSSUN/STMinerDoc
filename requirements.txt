@@ -2,3 +2,6 @@ myst_parser
 sphinx_design
 sphinx-rtd-theme
 sphinx_markdown_tables
+STMiner
+scipy
+scikit_learn
