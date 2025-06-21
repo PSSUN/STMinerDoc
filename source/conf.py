@@ -72,9 +72,7 @@ extensions = [
     "sphinx.ext.viewcode",
     "sphinx.ext.autosummary",
     "sphinx.ext.autodoc",
-    "sphinx.ext.napoleon",
-    "scikit_learn",
-    "scipy"
+    "sphinx.ext.napoleon"
 ]
 myst_enable_extensions = ["colon_fence"]
 
