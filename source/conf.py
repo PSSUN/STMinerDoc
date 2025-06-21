@@ -32,7 +32,7 @@ MOCK_MODULES = [
     "POT",
     "scanpy",
     "scikit_learn",
-    "scipy",
+    "scipy.stats",
     "seaborn",
     "setuptools",
     "tifffile",
@@ -41,6 +41,7 @@ MOCK_MODULES = [
     "umap_learn",
     "scikit-misc",
 ]
+
 for mod_name in MOCK_MODULES:
     sys.modules[mod_name] = Mock()
 
