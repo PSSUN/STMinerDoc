@@ -18,13 +18,13 @@ STMiner has been uploaded to [PyPI](https://pypi.org/project/STMiner), You can i
  3. Install STMiner via pip:
 
   ```bash
-  pip3 install STMiner
+  pip install stminer
   ```
 
   :::{dropdown} NOTE: If the download speed is slow, please try to specify the source
   For example:
   ```bash
-  pip3 install STMiner -i https://pypi.tuna.tsinghua.edu.cn/simple
+  pip install stminer -i https://pypi.tuna.tsinghua.edu.cn/simple
   ```
   :::
 
@@ -32,5 +32,5 @@ STMiner has been uploaded to [PyPI](https://pypi.org/project/STMiner), You can i
 Download STMiner [here](https://github.com/xjtu-omics/STMiner.git) and unzip, then run:
 
 ```bash
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 ```
