@@ -145,6 +145,35 @@ for (file in csv_files) {
 ```
 :::
 
+:::{dropdown} transfer_h5ad_to_R
+```python
+import scanpy as sc
+import pandas as pd
+import os
+from STMiner import SPFinder
+
+
+current_dir = 'I://ST' #put your h5ad file here!!!
+min_cell = 500
+
+for root, _, files in os.walk(current_dir):
+    for file in files:
+        if file.endswith('h5ad'):
+            h5ad_file_path = os.path.join(root, file)
+            # Process the H5AD file here
+            sp = SPFinder()
+            sp.read_h5ad(h5ad_file_path, bin_size=1)
+            sc.pp.filter_genes(sp.adata, min_cells=min_cell)
+            x_coords = sp.adata.obs['x'].values  # x 
+            y_coords = sp.adata.obs['y'].values  # y 
+            column_names = [f"{int(x)}x{int(y)}" for x, y in zip(x_coords, y_coords)]
+            dense_matrix = sp.adata.X.T.toarray()
+            gene_spot_matrix = pd.DataFrame(dense_matrix, index=sp.adata.var_names, columns=column_names)
+            filename = file.replace('.h5ad','')
+            gene_spot_matrix.to_csv(f"G://sparkx/{filename}_{min_cell}.csv")
+```
+:::
+
 :::{dropdown} SPARK
 ```R
 library(SPARK)
@@ -152,7 +181,7 @@ library(Matrix)
 
 
 dir_path <- "/data/home/st/"
-csv_files <- list.files(path = dir_path, pattern = "\\.csv$", full.names = TRUE)
+csv_files <- list.files(path = dir_path, pattern = "\\.csv$", full.names = TRUE) # output dir of transfer_h5ad_to_R
 out_dir <- "/data/home/result/"
 
 for (file in csv_files) {
