@@ -97,7 +97,7 @@ sns.clustermap(sp.genes_distance_array)
 ## build distance matrix & clustering
 
 ```python
-sp.cluster(n_clusters=6)
+sp.cluster_gene(n_clusters=6)
 ```
 
 **n_clusters**: Number of cluster
@@ -107,7 +107,7 @@ sp.cluster(n_clusters=6)
 The result are stored in **genes_labels**:
 
 ```python
-spf.genes_labels
+sp.genes_labels
 ```
 
 The output looks like the following:
@@ -126,26 +126,52 @@ The output looks like the following:
 | 98  | Rbp4           | 4      |
 | 99  | Hist1h1e       | 4      |
 
-To visualize the patterns by heatmap:
+To visualize patterns with automatic layout and spot sizes:
 
 ```python
 sp.get_pattern_array()
-sp.plot.plot_pattern(heatmap=False,
-                     s=5,
-                     rotate=True,
-                     reverse_y=True,
-                     reverse_x=True,
-                     vmax=95,
-                     cmap='Spectral_r',
-                     output_path='./')
+fig, axes = sp.plot.plot_pattern()
+
+# Select panels and export a vector figure without an interactive window.
+fig, axes = sp.plot.plot_pattern(
+    labels=[0, 1], shared_scale=True,
+    output_path="patterns.svg", show=False,
+)
 ```
 
- - **heatmap**: If True, plot a heatmap. If False, plot a scatterplot. False is the default.
- - **s**: Spot size 
- - **rotate\reverse_y\reverse_x**: Adjust the axis of plot.
- - **cmap**: cmap of plot
- - **vmax**: The percentage of the highest value of plots. Avoid the effect of large values for visualization.
- - **output_path**: If set, save the figure to path
+`heatmap=True` switches to a pixel heatmap with the same spatial orientation as
+scatter. `plot_bg=True` shows measured tissue positions. `num_cols` and `s` are
+automatic unless supplied. `colorbar=False` hides numeric scales. `vmax=99` is
+the upper **percentile of positive intensities**, not an absolute maximum.
+Default scaling is per panel; `shared_scale=True` uses a pooled scale. Intensities
+are composite pattern values and are not normalized by the number of genes.
+Empty patterns show "No signal". The source arrays and their precision are preserved.
+
+`output_path` must be a file, not a directory. The suffix selects PDF/SVG/PNG/TIFF/EPS;
+an absent suffix defaults to PDF. Raster exports default to 600 DPI. The returned
+`axes` array is always two-dimensional, with unused panels hidden.
+
+Legacy `rotate`, `reverse_x`, `reverse_y`, `rotate_img`, `k`, and `aspect` remain
+available. Matrices use `[x, y]`: `rotate=True` appears clockwise, `reverse_x`
+flips displayed y, and `reverse_y` flips displayed x. Background images now follow
+the same transform; supply an image aligned to the untransformed grid.
+`rotate_img=True, k=1` applies an image-only pre-rotation. Old image compensation
+settings may need adjustment. Older heatmaps also used a different row/column
+orientation. These options perform display transforms, not image registration.
+
+To enrich these zebrafish patterns and visualize continuous spatial pathway maps:
+
+```python
+enrichment = sp.enrich_patterns(organism="drerio", sources=["GO:BP", "KEGG"])
+fig, axes, spot_scores, terms = sp.plot.plot_pathways(
+    enrichment, bandwidth=1.5, contours=3,
+    output_path="spatial_pathways.svg", show=False,
+)
+```
+
+See [Pattern enrichment and spatial pathway maps](Pathway_spatial_maps.md) for
+background selection, expression layers, ID mapping, and interpretation.
+
 To visualize the genes by labels:
 
 ```python
@@ -157,9 +183,8 @@ sp.plot.plot_genes(label=0, n_gene=8, s=5, reverse_y=True, reverse_x=True)
 
 To visualize the specific gene (such as ***BRAFhuman***):
 ```python
-hcc2l.plot.plot_gene('BRAFhuman', 
-                     spot_size=10,
-                     global_matrix_spot_size=10,
+sp.plot.plot_gene('BRAFhuman', 
+                     s=10,
                      rotate=True, 
                      reverse_y=True, 
                      reverse_x=True, 

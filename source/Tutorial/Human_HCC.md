@@ -41,3 +41,25 @@ hcc.get_pattern_of_given_genes(gene_list=imm_genes)
 hcc.fit_pattern(n_comp=20) # Fit patterns of all genes
 df = compare_gmm_distance(hcc.custom_pattern, hcc.patterns) # Compare the distance between all genes and the given gene set
 ```
+
+## Optional pattern enrichment and spatial pathways
+
+The custom-gene-set comparison above does not itself create gene clusters.
+After fitting patterns, build the distance matrix and cluster genes before using
+pattern-specific enrichment:
+
+```python
+hcc.build_distance_array()
+hcc.cluster_gene(n_clusters=6)
+enrichment = hcc.enrich_patterns(organism="hsapiens", sources=["GO:BP", "KEGG"])
+fig, axes, spot_scores, terms = hcc.plot.plot_pathways(
+    enrichment, bandwidth=1.5, contours=3,
+    output_path="hcc_spatial_pathways.svg", show=False,
+)
+```
+
+Use normalized nonnegative expression, or select an existing normalized layer
+with `layer=`. The continuous view is an expression-weighted spatial distribution;
+the returned spot scores retain unsmoothed mean expression. For the statistical
+background, ID mapping, and full parameter descriptions, see
+[Pattern enrichment and spatial pathway maps](Pathway_spatial_maps.md).
