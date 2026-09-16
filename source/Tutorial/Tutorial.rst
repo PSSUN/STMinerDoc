@@ -1,8 +1,21 @@
 Tutorial
 ========
 
+.. toctree::
+   :hidden:
+
+   Zebrafish_melanoma
+   Human_HCC
+   Pathway_spatial_maps
+
 .. grid:: 1 1 2 2
    :gutter: 2
+
+   .. grid-item-card:: Pattern enrichment and spatial pathway maps
+      :link: Pathway_spatial_maps
+      :link-type: doc
+
+      GO/KEGG enrichment, continuous spatial densities, and traceable hit-gene scores.
 
    .. grid-item-card:: Zebrafish Melanoma 
       :link: Zebrafish_melanoma
