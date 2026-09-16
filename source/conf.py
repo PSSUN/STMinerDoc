@@ -17,6 +17,7 @@
 
 import os
 import sys
+from pathlib import Path
 from unittest.mock import Mock
 
 MOCK_MODULES = [
@@ -46,8 +47,15 @@ MOCK_MODULES = [
 #     sys.modules[mod_name] = Mock()
 
 
-current_dir = os.path.abspath("../")
-sys.path.insert(0, current_dir)
+# Prefer an explicitly selected checkout, then the sibling development checkout.
+# Do not shadow the installed package with the historical bundled source copy.
+docs_root = Path(__file__).resolve().parents[1]
+source_override = os.environ.get("STMINER_SOURCE")
+source_root = Path(source_override).resolve() if source_override else docs_root.parent / "STMiner"
+if source_override and not (source_root / "STMiner" / "__init__.py").is_file():
+    raise RuntimeError("STMINER_SOURCE must point to the STMiner repository root.")
+if (source_root / "STMiner" / "__init__.py").is_file():
+    sys.path.insert(0, str(source_root))
 
 
 # -- Project information -----------------------------------------------------
@@ -57,7 +65,14 @@ copyright = "2025, Peisen Sun"
 author = "Peisen Sun"
 
 # The full version, including alpha/beta/rc tags
-release = "1.1.0"
+import STMiner
+
+release = STMiner.__version__
+if not hasattr(STMiner.SPFinder, "enrich_patterns"):
+    raise RuntimeError(
+        "Documentation requires STMiner with enrich_patterns(); install the matching "
+        "source checkout or set STMINER_SOURCE to its repository root."
+    )
 
 
 # -- General configuration ---------------------------------------------------

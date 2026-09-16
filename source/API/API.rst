@@ -20,7 +20,7 @@ For the enrichment-to-space workflow, see
 the installed or locally selected STMiner source.
 
 STMiner.SPFinder
----------------
+================
 .. currentmodule:: STMiner.SPFinder
 
 .. autoclass:: STMiner.SPFinder.SPFinder

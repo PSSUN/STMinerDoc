@@ -41,3 +41,15 @@ and spatial-pathway interfaces require a checkout containing those methods;
 an older PyPI installation may not include them. Online enrichment requires
 internet access; plotting an existing enrichment table does not make additional
 enrichment requests.
+
+## Building these documents
+
+Sphinx prefers a sibling `STMiner` source checkout, or the repository root given
+by the `STMINER_SOURCE` environment variable. Otherwise it uses the installed
+package, which must include the documented methods. The historical bundled
+`STMinerDoc/STMiner` copy is not used for automatic API generation. Configure the
+documentation build environment with the matching package before building:
+
+```bash
+python -m sphinx -b html source build/html
+```
