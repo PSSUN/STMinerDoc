@@ -28,9 +28,16 @@ STMiner has been uploaded to [PyPI](https://pypi.org/project/STMiner), You can i
   ```
   :::
 
-## STMiner can be cloned from GitHub and installed locally (NOT recommended)
+## Install a matching source checkout
 Download STMiner [here](https://github.com/xjtu-omics/STMiner.git) and unzip, then run:
 
 ```bash
-pip install -r requirements.txt
+python -m pip install -e .
 ```
+
+Run this in the STMiner repository, not the documentation repository. The current
+source dependencies include `gprofiler-official==1.0.0`. New pattern-enrichment
+and spatial-pathway interfaces require a checkout containing those methods;
+an older PyPI installation may not include them. Online enrichment requires
+internet access; plotting an existing enrichment table does not make additional
+enrichment requests.
